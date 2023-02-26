@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
 
   # Associations et validations à mettre
-  has_many :bookings, dependent: destroy
-  has_many :rides, through: :bookings
+  has_many :bookings, dependent: :destroy
+  has_many :rides
 
-  
+
 end
