@@ -41,6 +41,11 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # Devise nous indique qu'il faut indiquer un mail si on décide de mettre en place une fonction mailer
+  # Pas besoin pour notre exo à nous
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
