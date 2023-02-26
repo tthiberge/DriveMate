@@ -65,7 +65,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   ########### Faudra mettre notre URL
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'https://drivemate.herokuapp.com/', port: 3000 }
 
 
   # Ignore bad email addresses and do not raise email delivery errors.
