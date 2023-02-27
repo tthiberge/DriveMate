@@ -1,2 +1,6 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<% @rides.each do |ride| %>
+  <p><%= ride.description %> - <%= ride.car_type %> - <%= ride.owner_presence %> - <%= ride.seats_available %></p>
+<% end %>
