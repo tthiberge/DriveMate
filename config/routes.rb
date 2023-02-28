@@ -5,9 +5,12 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "dashboard", to: "pages#dashboard"
 
-  # RIDES
-  resources :rides, only: [:show, :new, :create , :destroy]
+  # RIDES<<<<<<< HEAD
 
-  # BOOKINGS
-  resources :bookings, only: %i[create update]
+  resources :rides, only: [:show, :new, :create] do
+    # BOOKINGS
+    resources :bookings, only: %i[create]
+  end
+  resources :bookings, only: %i[update]
+
 end

@@ -1,3 +1,4 @@
+
 <h1>show</h1>
 
 <div class="container">
@@ -14,6 +15,18 @@
             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary btn-sm"%>
          </ul>
 
+          <p>Do you wanna book?</p>
+
+    <%= simple_form_for [@ride, @booking] do |f| %>
+      <%= f.input :comment,
+                  placeholder: "Say hi and describe why you would be the best driver !",
+                  hint: "Your comment must be at least 10 characters"
+                  %>
+      <%= f.submit %>
+    <% end %>
+
+    <%= console %>
+
           <%
 =begin%>
  <%= link_to "Delete bookmark",
@@ -27,4 +40,5 @@
  <% end %>
 <%
 =end%>
+
 </div>

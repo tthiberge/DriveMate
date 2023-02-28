@@ -3,6 +3,7 @@ class RidesController < ApplicationController
 
   def show
     @ride = Ride.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
