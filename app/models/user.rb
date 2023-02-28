@@ -13,6 +13,4 @@ class User < ApplicationRecord
   # (permet de sélectionner plus facilement les bookings des propriétaires)
 
   has_many :owner_bookings, through: :rides, source: :bookings
-
-
 end

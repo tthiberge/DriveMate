@@ -1,26 +1,99 @@
 <div class="container">
 
   <div class="personal-info">
-    <p></p>
+    <p><%= @user.first_name %> <%= @user.last_name %></p>
+    <p><%= @user.description %></p>
+    <p><%= @user.email %></p>
+    <p> Placeholder for creating a button sending to resetting the paswword via devise</p>
+
   </div>
 
-  <div class="rider-status">
+  <div class="rider-status d-flex">
+    <% if @user.car_owner? %>
+      <div>
+        <p>OWNER</p>
+        <p> <%=@user.gearbox%> gearbox </p>
+        <p>Car information: <%= @user.car_owner_info %></p>
+      </div>
+    <% end %>
+    <% if @user.driving_licence? %>
+      <div>
+        <p>DRIVER</p>
+        <p> I'm ready to drive! </p>
+        <p>Driving Licence information: <%= @user.driving_licence_info %></p>
+      </div>
+    <% end %>
 
   </div>
+
+<%# <p>NE FONCTIONNE PAS, VOIR AVEC TA MERCREDI MATIN</p> %>
 
   <div class="my-bookings">
+    <h3>My Bookings</h3>
+    <div class="bookings-owners-drivers d-flex">
+      <div class="as-owner ">
+        <h4>As Owner</h4>
+        <h5>Pending bookings</h5>
+        <ul>
+          <% @owner_bookings.each do |pending|
+           %>
+            <% if pending.status == "Pending" %>
+              <li><%= pending.ride.description %> on <%= pending.ride.date %> with <%= pending.user.first_name %></li>
+            <% end %>
+           <% end %>
+        </ul>
+        <h5>Confirmed bookings</h5>
+        <ul>
+          <% @owner_bookings.each do |confirmed|
+           %>
+            <% if confirmed.status == "Confirmed" %>
+              <li><%= pending.ride.description %> on <%= confirmed.ride.date %> with <%= confirmed.user.first_name %></li>
+            <% end %>
+           <% end %>
+        </ul>
+        <h5>Declined bookings</h5>
+        <ul>
+          <% @owner_bookings.each do |declined| %>
+            <% if declined.status == "declined" %>
+              <li><%= pending.ride.description %> on <%= declined.ride.date %> with <%= declined.user.first_name %></li>
+            <% end %>
+           <% end %>
+        </ul>
+      </div>
 
+      <div class="as-driver">
+        <h4>As Driver</h4>
+        <h5>Pending bookings</h5>
+        <ul>
+          <% @driver_bookings.each do |pending|
+           %>
+            <% if pending.status == "Pending" %>
+              <li><%= pending.ride.description %> on <%= pending.ride.date %> with <%= pending.ride.user.first_name %></li>
+            <% end %>
+           <% end %>
+        </ul>
+        <h5>Confirmed bookings</h5>
+        <ul>
+          <% @driver_bookings.each do |confirmed|
+           %>
+            <% if confirmed.status == "Confirmed" %>
+              <li><%= pending.ride.description %> on <%= confirmed.ride.date %> with <%= confirmed.ride.user.first_name %></li>
+            <% end %>
+           <% end %>
+        </ul>
+        <h5>Declined bookings</h5>
+        <ul>
+          <% @driver_bookings.each do |declined| %>
+            <% if declined.status == "declined" %>
+              <li><%= pending.ride.description %> on <%= declined.ride.date %> with <%= declined.ride.user.first_name %></li>
+            <% end %>
+           <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
 
 
 
 <%# Changer ici en fonction de comment j'ai adapté mon dashboard dans pagescontroller %>
-  <% unless @bookings.empty? %>
-    <% @bookings.each do |booking| %>
-    <p><%= booking.status %></p>
-    <p><%= booking.user.first_name %></p>
-    <p><%= booking.ride.user.first_name %></p>
-    <% end %>
-  <% end %>
-
 </div>
