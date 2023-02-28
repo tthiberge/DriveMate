@@ -1,0 +1,26 @@
+<div class="container">
+
+  <div class="personal-info">
+    <p></p>
+  </div>
+
+  <div class="rider-status">
+
+  </div>
+
+  <div class="my-bookings">
+
+  </div>
+
+
+
+<%# Changer ici en fonction de comment j'ai adapté mon dashboard dans pagescontroller %>
+  <% unless @bookings.empty? %>
+    <% @bookings.each do |booking| %>
+    <p><%= booking.status %></p>
+    <p><%= booking.user.first_name %></p>
+    <p><%= booking.ride.user.first_name %></p>
+    <% end %>
+  <% end %>
+
+</div>
