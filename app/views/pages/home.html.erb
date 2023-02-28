@@ -1,8 +1,25 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<% @rides.each do |ride| %>
-  <%= ride.user.first_name %> <p><%= ride.description %> - <%= ride.car_type %> - <%= ride.owner_presence %> - <%= ride.seats_available %> - <%= ride.date %> - <%= ride.departure_location %> - <%= ride.arrival_location %></p>
-<% end %>
+<ul>
+  <% @rides.each do |ride| %>
+    <li>
+      <%= link_to "#{ride.user.first_name} - #{ride.description} - #{ride.car_type} - #{ride.owner_presence} - #{ride.seats_available} - #{ride.date} - #{ride.departure_location} - #{ride.arrival_location}", ride_path(ride) %>
+    </li>
+  <% end %>
+</ul>
 
-<%= console %>
+
+<%#Using UI KIT from Le Wagon > trip = ride %>
+
+<div class="card-ride">
+  <img src="https://unsplash.com/fr/photos/ZRns2R5azu0" />
+  <div class="card-ride-infos">
+    <div>
+      <h2>Title here</h2>
+      <p>Short description here!</p>
+    </div>
+    <h2 class="card-trip-pricing">£99.99</h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+  </div>
+</div>
