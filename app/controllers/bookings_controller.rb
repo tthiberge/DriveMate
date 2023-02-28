@@ -1,18 +1,19 @@
 class BookingsController < ApplicationController
   def create
     @ride = Ride.find(params[:ride_id])
-    @user = User.find(params[:user_id])
     @booking = Booking.new(booking_params)
     @booking.ride = @ride
-    @booking.user = @user
-    if @booking.save
+    @booking.user = current_user
+
+     if @booking.save
       redirect_to dashboard_path
     else
-      redirect_to ride_path(@ride), status: :unprocessable_entity
+      # flash.alert("Au moins 10 caractères")
+      redirect_to ride_path(@ride)
       # Faire la show et vérifier si ça marche
       # Sinon je ne peux pas le vérifier sans formulaire
       # Nadia voulait me faire tester
-      # /!\ ça ne pourra
+      # /!\ ça ne pourra pas marcher sans formulaire
     end
   end
 
@@ -21,7 +22,7 @@ class BookingsController < ApplicationController
   end
 
   def update
-    
+
   end
 
   private
