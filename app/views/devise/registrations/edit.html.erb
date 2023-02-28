@@ -9,9 +9,6 @@
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
-
-
-
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
@@ -23,12 +20,31 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
-    <%= f.input :description,
-                hint: "leave it blank if you don't want to change it",
-                # required: false,
-                %>
+    <%= f.input :driving_licence,
+                as: :select, collection: [['Yes',true], ['No',false]],
+                required: true,
+                # include_blank: false,
+                autofocus: true,
+                prompt: "Do you have a driving licence?" %>
+    <%= f.input :driving_licence_info,
+                required: true,
+                autofocus: true %>
     <%= f.input :car_owner,
-                hint: "leave it blank if you don't want to change it",
+                as: :select, collection: [['Yes',true], ['No',false]],
+                required: true,
+                # include_blank: false,
+                autofocus: true,
+                prompt: "Select a movie" %>
+    <%= f.input :gearbox,
+                as: :select, collection: [['Automatic'], ['Manual']],
+                required: true,
+                autofocus: true,
+                prompt: "Select the type of gearbox" %>
+    <%= f.input :description,
+                hint: "leave it blank if you don't want to change it"
+                %>
+    <%= f.input :car_owner_info,
+                hint: "leave it blank if you don't want to change it"
                 # required: false,
                 %>
 
@@ -39,7 +55,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update",class: "btn btn-primary btn-sm" %>
   </div>
 <% end %>
 
