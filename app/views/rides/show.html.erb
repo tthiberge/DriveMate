@@ -8,9 +8,13 @@
 
     <%= simple_form_for [@ride, @booking] do |f| %>
       <%= f.input :comment,
-                  placeholder: "Write here your comment to the car owner" %>
+                  placeholder: "Say hi and describe why you would be the best driver !",
+                  hint: "Your comment must be at least 10 characters"
+                  %>
       <%= f.submit %>
     <% end %>
+
+    <%= console %>
 
 
 </div>
