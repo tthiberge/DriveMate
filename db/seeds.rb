@@ -7,8 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Cleaning DB"
+Booking.destroy_all
 Ride.destroy_all
 User.destroy_all
+
 puts "Seeding"
 
 # car owners
@@ -55,25 +57,30 @@ booking1 = Booking.new
 booking1.user = diane
 booking1.ride = ride1
 booking1.comment = "Can't wait to see my friends in Marseille!"
+booking1.save
 
 booking2 = Booking.new
 booking2.user = theo
 booking2.ride = ride2
 booking2.comment = "I'm going home"
+booking2.save
 
 booking3 = Booking.new
 booking3.user = maung
 booking3.ride = ride3
 booking3.comment = "Let's go to work together"
+booking3.save
 
 booking4 = Booking.new
 booking4.user = joy
 booking4.ride = ride4
 booking4.comment = "Happy to help, Happy You help me"
+booking4.save
 
 booking5 = Booking.new
 booking5.user = leo
 booking5.ride = ride5
 booking5.comment = "Let's commute together"
+booking5.save
 
 puts "Seeded"
