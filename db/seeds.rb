@@ -13,8 +13,8 @@ User.destroy_all
 
 puts "Seeding"
 
-# car owners
-theo = User.create!(password: '123456', first_name: 'theo', last_name: 'thib', email: 'tt@gmail.com', description: "gentil garçon", car_owner: true, gearbox: "manual", car_owner_info: "125673839", driving_licence: false, driving_licence_info: "14363783")
+
+theo = User.create(password: "123456", first_name: 'theo', last_name: 'thib', email: 'tt@gmail.com', description: "gentil garçon", car_owner: true, gearbox: "manual", car_owner_info: "125673839", driving_licence: false, driving_licence_info: "14363783")
 
 maung = User.create!(password: '123456', first_name: 'maung', last_name: 'petitfrère', email: 'maung@icloud.com', description: "lost my driving license", car_owner: true, gearbox: "manual", car_owner_info: "123433333", driving_licence: false, driving_licence_info: " ")
 
@@ -51,6 +51,7 @@ ride4.save
 ride5 = Ride.new(description: "Trajet quotidien Etiolles/Levallois", car_type: "ferrari", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Etiolles", arrival_location: "Levallois")
 ride5.user = sara
 ride5.save
+
 
 #bookings with user id && ride id && comment
 booking1 = Booking.new

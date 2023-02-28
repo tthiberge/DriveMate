@@ -1,10 +1,25 @@
+
+<h1>show</h1>
+
 <div class="container">
+        <div class="card">
+        <ul>
 
-  <h1>This is my show</h1>
+        <li>Description:  <%= @ride.description %></li>
+        <li>Car Type:       <%= @ride.car_type %></li>
+        <li>Owner Presence: <%= @ride.owner_presence%></li>
+        <li>Seat_available:  <%= @ride.seats_available %></li>
+        <li>Departure date:  <%= @ride.date %></li>
+        <li>Departure location:  <%= @ride.departure_location %></li>
+        <li>Arrival location:  <%= @ride.arrival_location %></li>
 
-  <p><%= @ride.description %></p>
 
-  <p>Do you wanna book?</p>
+           <%= link_to "Delete ride",
+             ride_path(@ride),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary btn-sm"%>
+         </ul>
+
+          <p>Do you wanna book?</p>
 
     <%= simple_form_for [@ride, @booking] do |f| %>
       <%= f.input :comment,
@@ -16,5 +31,18 @@
 
     <%= console %>
 
+          <%
+=begin%>
+ <%= link_to "Delete bookmark",
+            list_bookmarks_path(bookmark),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary btn-sm"%>
+<%
+=end%>
+        </div>
+    <%
+=begin%>
+ <% end %>
+<%
+=end%>
 
 </div>

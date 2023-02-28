@@ -1,5 +1,7 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+<%= link_to "create rides for you",  new_ride_path ,class: "btn btn-primary btn-sm" %>
+
 
 <ul>
   <% @rides.each do |ride| %>

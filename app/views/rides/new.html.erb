@@ -1,0 +1,12 @@
+<%= simple_form_for @ride do |f| %>
+  <%= f.input :car_type %>
+  <%= f.input :owner_presence, as: :select, collection: [['Yes',true], ['No',false]], required: true %>
+  <%= f.input :seats_available %>
+  <%= f.input :description %>
+  <%= f.input :date, as: :date %>
+  <%= f.input :departure_location %>
+  <%= f.input :arrival_location %>
+
+  <%= f.submit %>
+
+<% end %>
