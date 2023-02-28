@@ -1,0 +1,16 @@
+<div class="container">
+
+  <h1>This is my show</h1>
+
+  <p><%= @ride.description %></p>
+
+  <p>Do you wanna book?</p>
+
+    <%= simple_form_for [@ride, @booking] do |f| %>
+      <%= f.input :comment,
+                  placeholder: "Write here your comment to the car owner" %>
+      <%= f.submit %>
+    <% end %>
+
+
+</div>
