@@ -12,6 +12,7 @@ class RidesController < ApplicationController
   def create
     @ride = Ride.new(ride_params) # to authorizse for security
     @ride.user = current_user
+
     if @ride.save
       redirect_to ride_path(@ride)
     else
@@ -21,7 +22,7 @@ class RidesController < ApplicationController
 
   def destroy
     @ride = Ride.find(params[:id])
-    
+
     @ride.destroy
     redirect_to root_path, notice: "Ride successfully deleted.", status: :see_other
   end
@@ -29,6 +30,6 @@ class RidesController < ApplicationController
   private
 
   def ride_params
-    params.require(:ride).permit(:car_type, :owner_presence, :seats_available, :description)
+    params.require(:ride).permit(:car_type, :owner_presence, :seats_available, :description, :date)
   end
 end
