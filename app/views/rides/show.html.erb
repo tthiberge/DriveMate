@@ -9,6 +9,10 @@
         <li>Car Type:       <%= @ride.car_type %></li>
         <li>Owner Presence: <%= @ride.owner_presence%></li>
         <li>Seat_available:  <%= @ride.seats_available %></li>
+        <li>Departure date:  <%= @ride.date %></li>
+        <li>Departure location:  <%= @ride.departure_location %></li>
+        <li>Arrival location:  <%= @ride.arrival_location %></li>
+
 
            <%= link_to "Delete ride",
              ride_path(@ride),

@@ -17,13 +17,12 @@ class RidesController < ApplicationController
     if @ride.save
       redirect_to ride_path(@ride)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
     @ride = Ride.find(params[:id])
-
     @ride.destroy
     redirect_to root_path, notice: "Ride successfully deleted.", status: :see_other
   end
@@ -31,6 +30,7 @@ class RidesController < ApplicationController
   private
 
   def ride_params
-    params.require(:ride).permit(:car_type, :owner_presence, :seats_available, :description, :date)
+    params.require(:ride).permit(:car_type, :owner_presence,:seats_available,
+       :description, :date, :departure_location, :arrival_location)
   end
 end
