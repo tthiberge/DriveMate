@@ -39,7 +39,6 @@ ride2.user = diane
 ride2.save
 
 ride3 = Ride.new(description: "AR pour Versailles", car_type: "", owner_presence: true, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30))
->>>>>>> master
 ride3.user = maung
 ride3.save
 
