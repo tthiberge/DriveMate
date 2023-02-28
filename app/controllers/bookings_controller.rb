@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
       # Faire la show et vérifier si ça marche
       # Sinon je ne peux pas le vérifier sans formulaire
       # Nadia voulait me faire tester
-      # /!\ ça ne pourra 
+      # /!\ ça ne pourra
     end
   end
 
@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @
+    
   end
 
   private
