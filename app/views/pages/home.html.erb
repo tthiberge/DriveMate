@@ -4,10 +4,11 @@
 <ul>
   <% @rides.each do |ride| %>
     <li>
-      <%= link_to "#{ride.user.first_name} - #{ride.description} - #{ride.car_type} - #{ride.owner_presence} - #{ride.seats_available} - #{ride.date}", ride_path(ride) %>
+      <%= link_to "#{ride.user.first_name} - #{ride.description} - #{ride.car_type} - #{ride.owner_presence} - #{ride.seats_available} - #{ride.date} - #{ride.departure_location} - #{ride.arrival_location}", ride_path(ride) %>
     </li>
   <% end %>
 </ul>
+
 
 <%#Using UI KIT from Le Wagon > trip = ride %>
 
