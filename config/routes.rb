@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "dashboard", to: "pages#dashboard"
 
   # RIDES
-  resources :rides, only: [:show, :new, :create]
+  resources :rides, only: [:show, :new, :create , :destroy]
 
   # BOOKINGS
   resources :bookings, only: %i[create update]

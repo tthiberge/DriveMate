@@ -10,10 +10,10 @@
         <li>Seat_available:  <%= @ride.seats_available %></li>
 
            <%= link_to "Delete ride",
-             new_ride_path(@ride),
+             ride_path(@ride),
             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary btn-sm"%>
          </ul>
-         
+
           <%
 =begin%>
  <%= link_to "Delete bookmark",

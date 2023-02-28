@@ -20,11 +20,12 @@ class RidesController < ApplicationController
   end
 
   def destroy
-    @ride = Ride.find(param[:id])
+    @ride = Ride.find(params[:id])
+    
     @ride.destroy
-    redirect_to root_path , notice: "Ride successfully deleted.", status: :see_other
+    redirect_to root_path, notice: "Ride successfully deleted.", status: :see_other
   end
-  
+
   private
 
   def ride_params
