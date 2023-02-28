@@ -1,0 +1,30 @@
+<h1>show</h1>
+
+<div class="container">
+        <div class="card">
+        <ul>
+
+        <li>Description:  <%= @ride.description %></li>
+        <li>Car Type:       <%= @ride.car_type %></li>
+        <li>Owner Presence: <%= @ride.owner_presence%></li>
+        <li>Seat_available:  <%= @ride.seats_available %></li>
+
+           <%= link_to "Delete ride",
+             new_ride_path(@ride),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary btn-sm"%>
+         </ul>
+         
+          <%
+=begin%>
+ <%= link_to "Delete bookmark",
+            list_bookmarks_path(bookmark),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary btn-sm"%>
+<%
+=end%>
+        </div>
+    <%
+=begin%>
+ <% end %>
+<%
+=end%>
+</div>
