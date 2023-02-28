@@ -20,7 +20,7 @@ ride1.save
 ride2 = Ride.new(description: "Retour des Sables d'Olonne", car_type: "espace", owner_presence: true, seats_available: [1, 2, 3, 4].sample)
 ride2.user = User.last
 ride2.save
-
+ 
 ride3 = Ride.new(description: "AR pour Versailles", car_type: "", owner_presence: true, seats_available: [1, 2, 3, 4].sample)
 ride3.user = User.last
 ride3.save
