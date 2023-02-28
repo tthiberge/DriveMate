@@ -32,23 +32,23 @@ leo = User.create!(password: '123456', first_name: 'leo', last_name: 'martin', e
 
 
 # rides
-ride1 = Ride.new(description: "Paris-Marseille", car_type: "twingo", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30))
+ride1 = Ride.new(description: "Paris-Marseille", car_type: "twingo", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Paris", arrival_location: "Marseille")
 ride1.user = theo
 ride1.save
 
-ride2 = Ride.new(description: "Retour des Sables d'Olonne", car_type: "espace", owner_presence: true, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30))
+ride2 = Ride.new(description: "Retour des Sables d'Olonne", car_type: "espace", owner_presence: true, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Sables d'Olonne", arrival_location: "Reims")
 ride2.user = diane
 ride2.save
 
-ride3 = Ride.new(description: "AR pour Versailles", car_type: "", owner_presence: true, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30))
+ride3 = Ride.new(description: "AR pour Versailles", car_type: "", owner_presence: true, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Versailles", arrival_location: "Versailles (via Paris)")
 ride3.user = maung
 ride3.save
 
-ride4 = Ride.new(description: "Aider un papi qui s'est fait opérer", car_type: "ferrari", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30))
+ride4 = Ride.new(description: "Aider un papi qui s'est fait opérer", car_type: "ferrari", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Nancy", arrival_location: "CHU Nancy")
 ride4.user = joy
 ride4.save
 
-ride5 = Ride.new(description: "Trajet quotidien Etiolles/Levallois", car_type: "ferrari", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30))
+ride5 = Ride.new(description: "Trajet quotidien Etiolles/Levallois", car_type: "ferrari", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Etiolles", arrival_location: "Levallois")
 ride5.user = sara
 ride5.save
 

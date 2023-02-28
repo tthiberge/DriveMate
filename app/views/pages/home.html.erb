@@ -2,7 +2,7 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 
 <% @rides.each do |ride| %>
-  <%= ride.user.first_name %> <p><%= ride.description %> - <%= ride.car_type %> - <%= ride.owner_presence %> - <%= ride.seats_available %> - <%= ride.date %> </p>
+  <%= ride.user.first_name %> <p><%= ride.description %> - <%= ride.car_type %> - <%= ride.owner_presence %> - <%= ride.seats_available %> - <%= ride.date %> - <%= ride.departure_location %> - <%= ride.arrival_location %></p>
 <% end %>
 
 <%= console %>
