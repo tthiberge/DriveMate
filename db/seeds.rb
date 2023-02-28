@@ -30,23 +30,24 @@ leo = User.create!(password: '123456', first_name: 'leo', last_name: 'martin', e
 
 
 # rides
-ride1 = Ride.new(description: "Paris-Marseille", car_type: "twingo", owner_presence: false, seats_available: [1, 2, 3, 4].sample)
+ride1 = Ride.new(description: "Paris-Marseille", car_type: "twingo", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30))
 ride1.user = theo
 ride1.save
 
-ride2 = Ride.new(description: "Retour des Sables d'Olonne", car_type: "espace", owner_presence: true, seats_available: [1, 2, 3, 4].sample)
+ride2 = Ride.new(description: "Retour des Sables d'Olonne", car_type: "espace", owner_presence: true, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30))
 ride2.user = diane
 ride2.save
- 
-ride3 = Ride.new(description: "AR pour Versailles", car_type: "", owner_presence: true, seats_available: [1, 2, 3, 4].sample)
+
+ride3 = Ride.new(description: "AR pour Versailles", car_type: "", owner_presence: true, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30))
+>>>>>>> master
 ride3.user = maung
 ride3.save
 
-ride4 = Ride.new(description: "Aider un papi qui s'est fait opérer", car_type: "ferrari", owner_presence: false, seats_available: [1, 2, 3, 4].sample)
+ride4 = Ride.new(description: "Aider un papi qui s'est fait opérer", car_type: "ferrari", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30))
 ride4.user = joy
 ride4.save
 
-ride5 = Ride.new(description: "Trajet quotidien Etiolles/Levallois", car_type: "ferrari", owner_presence: false, seats_available: [1, 2, 3, 4].sample)
+ride5 = Ride.new(description: "Trajet quotidien Etiolles/Levallois", car_type: "ferrari", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30))
 ride5.user = sara
 ride5.save
 
