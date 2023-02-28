@@ -11,7 +11,7 @@ Ride.destroy_all
 
 puts "Seeding"
 
-# theo = User.create(first_name: 'theo', last_name: 'thib', email: 'tt@gmail.com', description: "gentil garçon", car_owner: true, gearbox: "manual", car_owner_info: "125673839", driving_licence: false, driving_licence_info: "14363783")
+# theo = User.create(first_name: 'theo', last_name: 'thib', email: 'tt@gmail.com', description: "gentil garçon", car_owner: true, gearbox: "manual", car_owner_info: "125673839", driving_licence: false, driving_licence_info: "14363783") # PASSWORD
 
 ride1 = Ride.new(description: "Paris-Marseille", car_type: "twingo", owner_presence: false, seats_available: [1, 2, 3, 4].sample)
 ride1.user = User.last
