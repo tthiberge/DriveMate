@@ -33,5 +33,4 @@ ride5 = Ride.new(description: "Trajet pour Normandie", car_type: "citadine", own
 ride5.user = User.last
 ride5.save
 
-
 puts "Seeded"
