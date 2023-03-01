@@ -2,6 +2,11 @@ class BookingsController < ApplicationController
   def create
     @ride = Ride.find(params[:ride_id])
     @booking = Booking.new(booking_params)
+
+    # Pundit
+    # authorize @ride - pas nécessaire car on l'amende pas vraiment
+    authorize @booking
+
     @booking.ride = @ride
     @booking.user = current_user
 

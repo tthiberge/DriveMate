@@ -6,6 +6,7 @@ class RidesController < ApplicationController
     @booking = Booking.new
     authorize @ride
     # Je ne comprends pas très bien pourquoi ça marche quand même sans ajouter authorize @booking
+    # car instance vide
 
   end
 
