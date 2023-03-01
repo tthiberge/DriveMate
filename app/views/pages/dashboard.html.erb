@@ -11,7 +11,7 @@
           <% @owner_bookings.each do |pending|
           %>
             <% if pending.status == "Pending" %>
-              <li><%= pending.ride.description %> on <%= pending.ride.date %> with <%= pending.user.first_name %></li>
+              <li><strong><%= pending.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= pending.ride.arrival_location %></strong>  on <%= pending.ride.date %> with <strong><%= pending.user.first_name %></strong> (Driver candidate)</li>
             <% end %>
           <% end %>
         </ul>
@@ -20,7 +20,7 @@
           <% @owner_bookings.each do |confirmed|
           %>
             <% if confirmed.status == "Confirmed" %>
-              <li><%= pending.ride.description %> on <%= confirmed.ride.date %> with <%= confirmed.user.first_name %></li>
+              <li><strong><%= confirmed.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= confirmed.ride.arrival_location %></strong>  on <%= confirmed.ride.date %> with <strong><%= confirmed.user.first_name %></strong> (Driver candidate)</li>
             <% end %>
           <% end %>
         </ul>
@@ -28,7 +28,7 @@
         <ul>
           <% @owner_bookings.each do |declined| %>
             <% if declined.status == "declined" %>
-              <li><%= pending.ride.description %> on <%= declined.ride.date %> with <%= declined.user.first_name %></li>
+              <li><strong><%= declined.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= declined.ride.arrival_location %></strong>  on <%= declined.ride.date %> with <strong><%= declined.user.first_name %></strong> (Driver candidate)</li>
             <% end %>
           <% end %>
         </ul>
@@ -41,7 +41,7 @@
           <% @driver_bookings.each do |pending|
           %>
             <% if pending.status == "Pending" %>
-              <li><%= pending.ride.description %> on <%= pending.ride.date %> with <%= pending.ride.user.first_name %></li>
+              <li><strong><%= pending.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= pending.ride.arrival_location %></strong>  on <%= pending.ride.date %> with <strong><%= pending.ride.user.first_name %></strong> (Owner)</li>
             <% end %>
           <% end %>
         </ul>
@@ -50,7 +50,7 @@
           <% @driver_bookings.each do |confirmed|
           %>
             <% if confirmed.status == "Confirmed" %>
-              <li><%= pending.ride.description %> on <%= confirmed.ride.date %> with <%= confirmed.ride.user.first_name %></li>
+              <li><strong><%= confirmed.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= confirmed.ride.arrival_location %></strong>  on <%= confirmed.ride.date %> with <strong><%= confirmed.ride.user.first_name %></strong> (Owner)</li>
             <% end %>
           <% end %>
         </ul>
@@ -58,7 +58,7 @@
         <ul>
           <% @driver_bookings.each do |declined| %>
             <% if declined.status == "declined" %>
-              <li><%= pending.ride.description %> on <%= declined.ride.date %> with <%= declined.ride.user.first_name %></li>
+              <li><strong><%= declined.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= declined.ride.arrival_location %></strong>  on <%= declined.ride.date %> with <strong><%= declined.ride.user.first_name %></strong> (Owner)</li>
             <% end %>
           <% end %>
         </ul>
