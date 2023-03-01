@@ -55,18 +55,19 @@ booking1 = Booking.new
 booking1.user = diane
 booking1.ride = ride1
 booking1.comment = "Can't wait to see my friends in Marseille!"
-booking1.save
+booking1.save!
 
 booking1bis = Booking.new
 booking1bis.user = laura
+booking1bis.ride = ride1
 booking1bis.comment = "I'm going to Cassis for the weekend, Marseille is my first step to get there!"
-booking1bis.save
+booking1bis.save!
 
 booking1ter = Booking.new
 booking1ter.user = leo
+booking1ter.ride = ride1
 booking1ter.comment = "I am visiting family"
-booking1ter.save
-=================
+booking1ter.save!
 
 booking2 = Booking.new
 booking2.user = theo
