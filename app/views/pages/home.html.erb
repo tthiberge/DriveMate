@@ -3,7 +3,11 @@
 </div>
 
 <%#Using UI KIT from Le Wagon > trip = ride %>
-  <%= link_to "Add a ride", new_ride_path, class: "btn btn-primary" %>
+
+  <% if current_user %>
+    <%= link_to "Add a ride", new_ride_path, class: "btn btn-primary" %>
+  <% end %>
+
 
   <div class="cards">
     <% @rides.each do |ride| %>
