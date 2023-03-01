@@ -1,9 +1,10 @@
 <div>
- <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+ <h1>All the rides</h1>
 </div>
 
 <%#Using UI KIT from Le Wagon > trip = ride %>
+  <%= link_to "Add a ride", new_ride_path, class: "btn btn-primary" %>
+
   <div class="cards">
     <% @rides.each do |ride| %>
       <%= link_to ride_path(ride) do %>
