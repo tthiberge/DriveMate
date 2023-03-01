@@ -13,7 +13,7 @@ User.destroy_all
 
 puts "Seeding"
 
-theo = User.create(password: "123456", first_name: 'theo', last_name: 'thib', email: 'tt@gmail.com', description: "gentil garçon", car_owner: true, gearbox: "manual", car_owner_info: "125673839", driving_licence: false, driving_licence_info: "14363783")
+theo = User.create(password: "123456", first_name: 'theo', last_name: 'thib', email: 'tt@gmail.com', description: "gentil garçon", car_owner: true, gearbox: "manual", car_owner_info: "125673839", driving_licence: true, driving_licence_info: "14363783")
 
 maung = User.create!(password: '123456', first_name: 'maung', last_name: 'petitfrère', email: 'maung@icloud.com', description: "lost my driving license", car_owner: true, gearbox: "manual", car_owner_info: "123433333", driving_licence: false, driving_licence_info: " ")
 
@@ -22,7 +22,7 @@ sara = User.create!(password: '123456', first_name: 'sara', last_name: 'beniche'
 # car owners && drivers
 diane = User.create!(password: '123456', first_name: 'diane', last_name: 'lesvenan', email: 'diane_lesvenan@icloud.com', description: "managing my grand pa's car", car_owner: true, gearbox: "automatic", car_owner_info: "123477777", driving_licence: true, driving_licence_info: "14363777")
 
-joy = User.create!(password: '123456', first_name: 'joy', last_name: 'danenberg', email: 'joy@icloud.com', description: "broke my leg", car_owner: true, gearbox: "automatic", car_owner_info: "123455555", driving_licence: true, driving_licence_info: "14363555")
+joy = User.create!(password: '123456', first_name: 'joy', last_name: 'danenberg', email: 'joy@icloud.com', description: "broke my leg", car_owner: true, gearbox: "automatic", car_owner_info: "123455555", driving_licence: false, driving_licence_info: "14363555")
 
 # drivers
 laura = User.create!(password: '123456', first_name: 'laura', last_name: 'amazing', email: 'laura_amazing@icloud.com', description: "la pilote", car_owner: false, gearbox: "manual", car_owner_info: "123455544", driving_licence: true, driving_licence_info: "14363544")
