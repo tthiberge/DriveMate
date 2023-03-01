@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # RIDES<<<<<<< HEAD
 
-  resources :rides, only: [:show, :new, :create, :destroy] do
+  resources :rides, only: [:show, :new, :create, :edit, :update, :destroy] do
     # BOOKINGS
     resources :bookings, only: %i[create]
   end
