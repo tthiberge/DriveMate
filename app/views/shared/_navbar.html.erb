@@ -11,24 +11,31 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <%= link_to "Explorer", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Rides", "#", class: "nav-link" %>
+            <%= link_to "#", class: "nav-link" do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
           </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Favoris", "#", class: "nav-link" %>
+            <%= link_to "#", class: "nav-link" do %>
+              <i class="fa-solid fa-heart"></i>
+            <% end %>
           </li>
           <li class="nav-item active">
-            <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
+            <%= link_to dashboard_path, class: "nav-link" do %>
+             <i class="fa-solid fa-table-cells"></i>
+            <% end %>
           </li>
 
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/joydbg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <%= image_tag "https://fastly.picsum.photos/id/476/200/300.jpg?hmac=_vE--dw3keZ1r73AbtN9I362ItgpZJkRbRrJsB688Kw", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Add a ride", "#", class: "dropdown-item" %>
+              <%= link_to "My previous rides", "#", class: "dropdown-item" %>
               <%= link_to "Edit profile", edit_user_registration_path, class: "nav-link" %>
               <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
 
