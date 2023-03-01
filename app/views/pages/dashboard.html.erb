@@ -1,99 +1,140 @@
-<div class="container">
+<div class="row">
 
-  <div class="personal-info">
-    <p><%= @user.first_name %> <%= @user.last_name %></p>
-    <p><%= @user.description %></p>
-    <p><%= @user.email %></p>
-    <p> Placeholder for creating a button sending to resetting the paswword via devise</p>
-
-  </div>
-
-  <div class="rider-status d-flex">
-    <% if @user.car_owner? %>
-      <div>
-        <p>OWNER</p>
-        <p> <%=@user.gearbox%> gearbox </p>
-        <p>Car information: <%= @user.car_owner_info %></p>
-      </div>
-    <% end %>
-    <% if @user.driving_licence? %>
-      <div>
-        <p>DRIVER</p>
-        <p> I'm ready to drive! </p>
-        <p>Driving Licence information: <%= @user.driving_licence_info %></p>
-      </div>
-    <% end %>
-
-  </div>
-
-<%# <p>NE FONCTIONNE PAS, VOIR AVEC TA MERCREDI MATIN</p> %>
-
-  <div class="my-bookings">
-    <h3>My Bookings</h3>
+  <%# <p>NE FONCTIONNE PAS, VOIR AVEC TA MERCREDI MATIN</p> %>
+  <div class="col-8">
+    <h1>My Bookings</h1>
     <div class="bookings-owners-drivers d-flex">
       <div class="as-owner ">
-        <h4>As Owner</h4>
-        <h5>Pending bookings</h5>
+        <h4>I have a car</h4>
+        <p>Pending bookings</p>
         <ul>
           <% @owner_bookings.each do |pending|
-           %>
+          %>
             <% if pending.status == "Pending" %>
               <li><%= pending.ride.description %> on <%= pending.ride.date %> with <%= pending.user.first_name %></li>
             <% end %>
-           <% end %>
+          <% end %>
         </ul>
-        <h5>Confirmed bookings</h5>
+        <p>Confirmed bookings</p>
         <ul>
           <% @owner_bookings.each do |confirmed|
-           %>
+          %>
             <% if confirmed.status == "Confirmed" %>
               <li><%= pending.ride.description %> on <%= confirmed.ride.date %> with <%= confirmed.user.first_name %></li>
             <% end %>
-           <% end %>
+          <% end %>
         </ul>
-        <h5>Declined bookings</h5>
+        <p>Declined bookings</p>
         <ul>
           <% @owner_bookings.each do |declined| %>
             <% if declined.status == "declined" %>
               <li><%= pending.ride.description %> on <%= declined.ride.date %> with <%= declined.user.first_name %></li>
             <% end %>
-           <% end %>
+          <% end %>
         </ul>
       </div>
 
       <div class="as-driver">
-        <h4>As Driver</h4>
-        <h5>Pending bookings</h5>
+        <h4>I have a driving licence</h4>
+        <p>Pending bookings</p>
         <ul>
           <% @driver_bookings.each do |pending|
-           %>
+          %>
             <% if pending.status == "Pending" %>
               <li><%= pending.ride.description %> on <%= pending.ride.date %> with <%= pending.ride.user.first_name %></li>
             <% end %>
-           <% end %>
+          <% end %>
         </ul>
-        <h5>Confirmed bookings</h5>
+        <p>Confirmed bookings</p>
         <ul>
           <% @driver_bookings.each do |confirmed|
-           %>
+          %>
             <% if confirmed.status == "Confirmed" %>
               <li><%= pending.ride.description %> on <%= confirmed.ride.date %> with <%= confirmed.ride.user.first_name %></li>
             <% end %>
-           <% end %>
+          <% end %>
         </ul>
-        <h5>Declined bookings</h5>
+        <p>Declined bookings</p>
         <ul>
           <% @driver_bookings.each do |declined| %>
             <% if declined.status == "declined" %>
               <li><%= pending.ride.description %> on <%= declined.ride.date %> with <%= declined.ride.user.first_name %></li>
             <% end %>
-           <% end %>
+          <% end %>
         </ul>
       </div>
     </div>
   </div>
 
+  <div class="col-4">
+    <div class="modify_profile">
+        <%= link_to edit_user_registration_path, class: "nav-link" do %>
+          <i class="fa-solid fa-pen"></i>
+        <% end %>
+    </div>
+
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">Profile picture</th>
+          <td>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <%= image_tag "https://fastly.picsum.photos/id/476/200/300.jpg?hmac=_vE--dw3keZ1r73AbtN9I362ItgpZJkRbRrJsB688Kw", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %></td>
+        </tr>
+
+        <tr>
+          <th scope="row">Name</th>
+          <td><%= @user.first_name %> <%= @user.last_name %></td>
+        </tr>
+
+        <tr>
+          <th scope="row">Email</th>
+          <td><%= @user.email %></td>
+        </tr>
+
+
+        <tr>
+          <th scope="row">Description</th>
+          <td><%= @user.description %></td>
+        </tr>
+
+        <tr>
+          <th scope="row">Gearbox</th>
+          <td><%= @user.gearbox %></td>
+        </tr>
+
+        <% if @user.car_owner? %>
+          <tr>
+            <th scope="row">I am a car owner</th>
+            <td>
+              <p><%=@user.gearbox%> gearbox </p>
+              <p><%= @user.car_owner_info %></p>
+          </tr>
+        <% end %></td>
+
+        <% if @user.driving_licence? %>
+          <tr>
+            <th scope="row">I have a valid driving licence</th>
+            <td><%= @user.driving_licence_info %></td>
+          </tr>
+        <% end %></td>
+
+        <tr>
+          <th scope="row">My Password</th>
+          <td> ****** </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+
+  <%# <p> Placeholder for creating a button sending to resetting the paswword via devise</p>
+ %>
+</div>
 
 
 <%# Changer ici en fonction de comment j'ai adapté mon dashboard dans pagescontroller %>
-</div>
