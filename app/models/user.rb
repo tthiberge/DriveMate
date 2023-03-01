@@ -4,13 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
   # Associations et validations à mettre
   has_many :bookings, dependent: :destroy
   has_many :rides
+  has_one_attached :photo
+
 
   # Création d'une association directe entre booking et user via ride
   # (permet de sélectionner plus facilement les bookings des propriétaires)
 
-  has_many :owner_bookings, through: :rides, source: :bookings
+  # has_many :owner_bookings, through: :rides, source: :bookings
 end

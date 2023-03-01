@@ -14,6 +14,10 @@
         <li>Arrival location:  <%= @ride.arrival_location %></li>
 
 
+
+           <%= link_to "Edit ride", edit_ride_path(@ride), class: "btn btn-primary btn-sm"%>
+         </ul>
+
            <%= link_to "Delete ride",
              ride_path(@ride),
             data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary btn-sm"%>
@@ -28,21 +32,4 @@
                   %>
       <%= f.submit %>
     <% end %>
-
-    <%= console %>
-
-          <%
-=begin%>
- <%= link_to "Delete bookmark",
-            list_bookmarks_path(bookmark),
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary btn-sm"%>
-<%
-=end%>
-        </div>
-    <%
-=begin%>
- <% end %>
-<%
-=end%>
-
 </div>

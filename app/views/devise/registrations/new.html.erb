@@ -48,11 +48,11 @@
                 autofocus: true%>
     <%= f.input :description,
                 autofocus: true %>
-
+    <%= f.input :photo, as: :file %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", class: "btn btn-ghost" %>
   </div>
 <% end %>
 
