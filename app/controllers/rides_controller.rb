@@ -7,7 +7,8 @@ class RidesController < ApplicationController
     @markers = @rides.geocoded.map do |ride|
       {
         lat: ride.latitude,
-        lng: ride.longitude
+        lng: ride.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {ride: ride})
       }
     end
   end
