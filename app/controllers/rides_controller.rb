@@ -17,7 +17,7 @@ class RidesController < ApplicationController
   end
 
   def create
-    @ride = Ride.new(ride_params) # to authorizse for security
+    @ride = Ride.new(ride_params) # to authorize for security
 
     # Pundit:
     authorize @ride
@@ -34,6 +34,7 @@ class RidesController < ApplicationController
 
   def edit
     @ride = Ride.find(params[:id])
+    authorize @ride
   end
 
   def update
