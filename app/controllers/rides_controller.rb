@@ -39,6 +39,8 @@ class RidesController < ApplicationController
 
   def update
     @ride = Ride.find(params[:id])
+    authorize @ride
+
     if @ride.update(ride_params)
       redirect_to ride_path(@ride)
     else
