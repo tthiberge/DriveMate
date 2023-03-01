@@ -2,3 +2,10 @@
   width : 800px;
   margin: 0 auto;
 }
+
+.app-content {
+  min-height: calc(100vh - 140px);
+  margin-top: 60px;
+  margin-bottom: 60px;
+  // overflow: scroll;
+}
