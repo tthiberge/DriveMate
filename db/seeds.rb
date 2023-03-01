@@ -13,7 +13,6 @@ User.destroy_all
 
 puts "Seeding"
 
-
 theo = User.create(password: "123456", first_name: 'theo', last_name: 'thib', email: 'tt@gmail.com', description: "gentil garçon", car_owner: true, gearbox: "manual", car_owner_info: "125673839", driving_licence: false, driving_licence_info: "14363783")
 
 maung = User.create!(password: '123456', first_name: 'maung', last_name: 'petitfrère', email: 'maung@icloud.com', description: "lost my driving license", car_owner: true, gearbox: "manual", car_owner_info: "123433333", driving_licence: false, driving_licence_info: " ")
@@ -29,7 +28,6 @@ joy = User.create!(password: '123456', first_name: 'joy', last_name: 'danenberg'
 laura = User.create!(password: '123456', first_name: 'laura', last_name: 'amazing', email: 'laura_amazing@icloud.com', description: "la pilote", car_owner: false, gearbox: "manual", car_owner_info: "123455544", driving_licence: true, driving_licence_info: "14363544")
 
 leo = User.create!(password: '123456', first_name: 'leo', last_name: 'martin', email: 'leo_martin@icloud.com', description: "le pilote", car_owner: false, gearbox: "automatic", car_owner_info: "123455514", driving_licence: true, driving_licence_info: "14363514")
-
 
 # rides
 ride1 = Ride.new(description: "Paris-Marseille", car_type: "twingo", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Paris", arrival_location: "Marseille")
@@ -52,8 +50,7 @@ ride5 = Ride.new(description: "Trajet quotidien Etiolles/Levallois", car_type: "
 ride5.user = sara
 ride5.save
 
-
-#bookings with user id && ride id && comment
+# bookings with user id && ride id && comment
 booking1 = Booking.new
 booking1.user = diane
 booking1.ride = ride1
