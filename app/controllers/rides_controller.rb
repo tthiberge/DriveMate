@@ -30,7 +30,7 @@ class RidesController < ApplicationController
     if @ride.update(ride_params)
       redirect_to ride_path(@ride)
     else
-      render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
