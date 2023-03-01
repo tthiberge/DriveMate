@@ -21,6 +21,19 @@ class RidesController < ApplicationController
     end
   end
 
+  def edit
+    @ride = Ride.find(params[:id])
+  end
+
+  def update
+    @ride = Ride.find(params[:id])
+    if @ride.update(ride_params)
+      redirect_to ride_path(@ride)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @ride = Ride.find(params[:id])
     @ride.destroy
