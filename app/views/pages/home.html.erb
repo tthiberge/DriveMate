@@ -1,9 +1,10 @@
 <div>
- <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+ <h1>All the rides</h1>
 </div>
 
 <%#Using UI KIT from Le Wagon > trip = ride %>
+  <%= link_to "Add a ride", new_ride_path, class: "btn btn-primary" %>
+
   <div class="cards">
     <% @rides.each do |ride| %>
       <%= link_to ride_path(ride) do %>
@@ -11,9 +12,9 @@
         <div class="container">
           <div class="card-category">
             <%#= image_tag "form-to-img.png" %>
-            <div class="card-departure"><h2><%= ride.departure_location.capitalize %></h2></div>
+            <div><h2><%= ride.departure_location.capitalize %></h2></div>
             <i class="fa-solid fa-angles-right"></i>
-            <div class="card-arrival"><h2><%= ride.arrival_location.capitalize %></h2></div>
+            <div><h2><%= ride.arrival_location.capitalize %></h2></div>
           </div>
           <div class="card-trip-infos">
             <div>
