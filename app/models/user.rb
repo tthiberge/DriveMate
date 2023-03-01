@@ -8,4 +8,10 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :rides
   has_one_attached :photo
+
+
+  # Création d'une association directe entre booking et user via ride
+  # (permet de sélectionner plus facilement les bookings des propriétaires)
+
+  # has_many :owner_bookings, through: :rides, source: :bookings
 end
