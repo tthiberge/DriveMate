@@ -4,8 +4,8 @@
   <%= f.input :seats_available %>
   <%= f.input :description %>
   <%= f.input :date, as: :date %>
-  <%= f.input :departure_location %>
-  <%= f.input :arrival_location %>
+  <%= f.input :departure_location, class: "d-none" %>
+  <%= f.input :arrival_location, class: "d-none" %>
 
   <%= f.submit %>
 
