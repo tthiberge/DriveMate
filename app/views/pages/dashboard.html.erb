@@ -2,6 +2,7 @@
 
   <%# <p>NE FONCTIONNE PAS, VOIR AVEC TA MERCREDI MATIN</p> %>
   <div class="col-8">
+
     <h1>My Bookings</h1>
     <div class="bookings-owners-drivers d-flex">
       <div class="as-owner ">
@@ -21,18 +22,23 @@
           %>
             <% if confirmed.status == "Confirmed" %>
               <li><strong>< p%= confirmed.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= confirmed.ride.arrival_location %></strong>  on <%= confirmed.ride.date %> with <strong><%= confirmed.user.first_name %></strong> (Driver candidate)</li>
+
             <% end %>
           <% end %>
-        </ul>
-        <p>Declined bookings</p>
-        <ul>
-          <% @owner_bookings.each do |declined| %>
+        </div>
+
+        <div>
+          <p>Declined bookings</p>
+          <% @owner_bookings.each do |declined|%>
             <% if declined.status == "declined" %>
+
               <li><strong><%= declined.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= declined.ride.arrival_location %></strong>  on <%= declined.ride.date %> with <strong><%= declined.user.first_name %></strong> (Driver candidate)</li>
+
             <% end %>
           <% end %>
-        </ul>
+        </div>
       </div>
+
 
       <div class="as-driver">
         <h4>I have a driving licence</h4>
@@ -51,26 +57,30 @@
           %>
             <% if confirmed.status == "Confirmed" %>
               <li><strong><%= confirmed.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= confirmed.ride.arrival_location %></strong>  on <%= confirmed.ride.date %> with <strong><%= confirmed.ride.user.first_name %></strong> (Owner)</li>
+
             <% end %>
           <% end %>
-        </ul>
-        <p>Declined bookings</p>
-        <ul>
+        </div>
+
+        <div>
+          <p>Declined bookings</p>
           <% @driver_bookings.each do |declined| %>
             <% if declined.status == "declined" %>
+
               <li><strong><%= declined.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= declined.ride.arrival_location %></strong>  on <%= declined.ride.date %> with <strong><%= declined.ride.user.first_name %></strong> (Owner)</li>
+
             <% end %>
           <% end %>
-        </ul>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="col-4">
     <div class="modify_profile">
-        <%= link_to edit_user_registration_path, class: "nav-link" do %>
-          <i class="fa-solid fa-pen"></i>
-        <% end %>
+      <%= link_to edit_user_registration_path, class: "nav-link" do %>
+        <i class="fa-solid fa-pen"></i>
+      <% end %>
     </div>
 
     <table class="table">
@@ -130,10 +140,7 @@
       </tbody>
     </table>
   </div>
-
-
-  <%# <p> Placeholder for creating a button sending to resetting the paswword via devise</p>
- %>
+  <%# <p> Placeholder for creating a button sending to resetting the paswword via devise</p>%>
 </div>
 
 
