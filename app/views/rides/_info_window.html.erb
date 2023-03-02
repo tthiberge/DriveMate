@@ -1,0 +1,11 @@
+<%= link_to ride_path(ride) do %>
+  <ul>
+    <li>To <%= ride.arrival_location %></li>
+    <li>On <%= ride.date %></li>
+    <li>Car Type: <%= ride.car_type %></li>
+    <li>Owner presence: <%= ride.owner_presence%></li>
+    <li>Seat(s) available: <%= ride.seats_available %></li>
+    <li>Description:  <%= ride.description %></li>
+    <li>From <%= ride.departure_location %></li>
+  </ul>
+<% end %>
