@@ -6,106 +6,101 @@
       <h2>My Bookings</h2>
     </div>
 
-    <div class="d-flex justify-content-between">
-      <div class="as-owner ">
+    <div class="row">
+      <div class="as-owner col-6">
         <div class = "d-flex justify-content-center">
           <h4>I have a car</h4>
         </div>
 
-        <p>Pending bookings</p>
-        <% @owner_bookings.each do |pending|%>
-          <% if pending.status == "pending" %>
-            <div class="card-product">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-              <div class="card-product-infos">
-                  <p>From <strong><%= pending.ride.departure_location.capitalize %></strong></p>
-                  <p>To <strong><%= pending.ride.arrival_location.capitalize %></strong></p>
-                  <p>On <strong><%= pending.ride.date %></strong></p>
-                  <p>With <strong><%= pending.user.first_name %></strong></p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-
-        <p>Confirmed bookings</p>
-        <% @owner_bookings.each do |confirmed|%>
-          <% if confirmed.status == "confirmed" %>
-            <div class="card-product">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-              <div class="card-product-infos">
+        <div>
+          <p>Pending bookings</p>
+          <% @owner_bookings.each do |pending|%>
+            <% if pending.status == "pending" %>
+              <div class="card-product">
                 <p>From <strong><%= pending.ride.departure_location.capitalize %></strong></p>
                 <p>To <strong><%= pending.ride.arrival_location.capitalize %></strong></p>
                 <p>On <strong><%= pending.ride.date %></strong></p>
                 <p>With <strong><%= pending.user.first_name %></strong></p>
               </div>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
 
-        <p>Declined bookings</p>
-        <% @owner_bookings.each do |declined|%>
-          <% if declined.status == "declined" %>
-            <div class="card-product">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-              <div class="card-product-infos">
+        <div>
+          <p>Confirmed bookings</p>
+          <% @owner_bookings.each do |confirmed|%>
+            <% if confirmed.status == "confirmed" %>
+              <div class="card-product">
                 <p>From <strong><%= pending.ride.departure_location.capitalize %></strong></p>
                 <p>To <strong><%= pending.ride.arrival_location.capitalize %></strong></p>
                 <p>On <strong><%= pending.ride.date %></strong></p>
                 <p>With <strong><%= pending.user.first_name %></strong></p>
               </div>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+
+        <div>
+          <p>Declined bookings</p>
+          <% @owner_bookings.each do |declined|%>
+            <% if declined.status == "declined" %>
+              <div class="card-product">
+                <p>From <strong><%= pending.ride.departure_location.capitalize %></strong></p>
+                <p>To <strong><%= pending.ride.arrival_location.capitalize %></strong></p>
+                <p>On <strong><%= pending.ride.date %></strong></p>
+                <p>With <strong><%= pending.user.first_name %></strong></p>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
       </div>
 
-      <div class="as-driver">
+      <div class="as-driver col-6">
         <div class = "d-flex justify-content-center">
           <h4>I have a driving licence</h4>
         </div>
-        <p>Pending bookings</p>
-        <%@driver_bookings.each do |pending|%>
-          <% if pending.status == "pending" %>
-            <div class="card-product">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-              <div class="card-product-infos">
-                  <p>From <strong><%= pending.ride.departure_location.capitalize %></strong></p>
-                  <p>To <strong><%= pending.ride.arrival_location.capitalize %></strong></p>
-                  <p>On <strong><%= pending.ride.date %></strong></p>
-                  <p>With <strong><%= pending.user.first_name %></strong></p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
 
-        <p>Confirmed bookings</p>
-        <% @driver_bookings.each do |confirmed|%>
-          <% if confirmed.status == "confirmed" %>
-            <div class="card-product">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-              <div class="card-product-infos">
+        <div>
+          <p>Pending bookings</p>
+          <%@driver_bookings.each do |pending|%>
+            <% if pending.status == "pending" %>
+              <div class="card-product">
                 <p>From <strong><%= pending.ride.departure_location.capitalize %></strong></p>
                 <p>To <strong><%= pending.ride.arrival_location.capitalize %></strong></p>
                 <p>On <strong><%= pending.ride.date %></strong></p>
                 <p>With <strong><%= pending.user.first_name %></strong></p>
               </div>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
 
-        <p>Declined bookings</p>
-        <% @driver_bookings.each do |declined| %>
-          <% if declined.status == "declined" %>
-            <div class="card-product">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-              <div class="card-product-infos">
+        <div>
+          <p>Confirmed bookings</p>
+          <% @driver_bookings.each do |confirmed|%>
+            <% if confirmed.status == "confirmed" %>
+              <div class="card-product">
                 <p>From <strong><%= pending.ride.departure_location.capitalize %></strong></p>
                 <p>To <strong><%= pending.ride.arrival_location.capitalize %></strong></p>
                 <p>On <strong><%= pending.ride.date %></strong></p>
                 <p>With <strong><%= pending.user.first_name %></strong></p>
               </div>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+
+        <div>
+          <p>Declined bookings</p>
+          <% @driver_bookings.each do |declined| %>
+            <% if declined.status == "declined" %>
+              <div class="card-product">
+                <p>From <strong><%= pending.ride.departure_location.capitalize %></strong></p>
+                <p>To <strong><%= pending.ride.arrival_location.capitalize %></strong></p>
+                <p>On <strong><%= pending.ride.date %></strong></p>
+                <p>With <strong><%= pending.user.first_name %></strong></p>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

@@ -1,19 +1,16 @@
 .card-category {
-  height: 180px;
+  height: 250px;
   color: black;
-  font-size: 24px;
-  font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   padding: 10px;
   border: 1px solid #c3c3c3;
 }
 
 .cards {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   margin-bottom: 20px;
   -webkit-overflow-scrolling: touch;
 }
@@ -28,15 +25,8 @@
   text-decoration: none;
 }
 
-.card-trip {
-  flex: 1;
-  margin: 5px;
-  position: relative;
-}
-
 .card-category {
   position: relative;
-
 }
 
 .card-departure {
@@ -52,6 +42,10 @@
 }
 
 .card-trip {
+  flex: 1;
+  width: 95%;
+  margin: 10px;
+  position: relative;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -64,7 +58,6 @@
 }
 
 .card-trip h2 {
-  font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
@@ -88,4 +81,30 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+
+.seats-date {
+  p {
+    margin: 0;
+  }
+
+  .nb-seat{
+    float: right;
+  }
+}
+
+.ride-s-way{
+  position: absolute;
+  top: 5%;
+  left: 38%;
+  font-size: 100px;
+  color: white;
+  transform: rotate(40deg);
+}
+
+.card-ride {
+  background-color: lightgrey;
+  padding: 5px;
+  border-radius: 5px;
 }

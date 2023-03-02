@@ -1,6 +1,6 @@
 <div class = "d-flex justify-content-between">
  <h3>All Rides</h3>
-  <% if current_user %>
+  <% if current_user.present? %>
     <%= link_to "Add a ride", new_ride_path, class: "btn btn-dark" %>
   <% end %>
 </div>
@@ -8,40 +8,34 @@
 
 <div class="cards mt-3">
   <% @rides.each do |ride| %>
-    <div class="card-trip">
-      <%= link_to ride_path(ride) do %>
-        <div class="card-category">
-          <div class="row">
-            <div class="col align-self-start">
-              <h2><%= ride.departure_location.capitalize %></h2>
-            </div>
-            <div class="col align-self-center">
-              <i class="fa-solid fa-chevron-right"></i>
-            </div>
-            <div class="col align-self-end">
-              <h2><%= ride.arrival_location.capitalize %></h2>
-            </div>
-          </div>
+    <%= link_to ride_path(ride) do %>
+    <div class="card-category d-flex flex-column p-3 m-2">
+      <div class="card-ride d-flex justify-content-between flex-grow-1">
+        <div class="ride-departure">
+          <p><%= ride.departure_location.capitalize %></p>
         </div>
-
-        <div class="card-trip-infos">
-          <div>
-            <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", crop: :fill, id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= link_to "#", class: "nav-link", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false do %>
-                <i class="fa-solid fa-user"></i>
-              <% end %>
-            <% end %>
-            <%= ride.user.first_name.capitalize %>
-          </div>
-          <div class="card-trip-pricing">
-            <h2><%= ride.seats_available %> <i class="fa-solid fa-person"></i></h2>
-            <p><%= ride.date.day %>/<%= ride.date.month %>/<%= ride.date.year %></p>
-          </div>
+        <div class="ride-s-way align-self-center">
+          <i class="fa-solid fa-arrow-right"></i>
         </div>
-
-      <% end %>
+        <div class="ride-arrival align-self-end">
+          <p><%= ride.arrival_location.capitalize %></p>
+        </div>
+      </div>
+      <div class="card-info d-flex justify-content-between">
+        <div class="profile align-self-end">
+          <% if current_user.present? && current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", crop: :fill, id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <i class="fa-solid fa-user"></i>
+          <% end %>
+          <%= ride.user.first_name.capitalize %>
+        </div>
+        <div class="seats-date">
+          <p class="nb-seat"><%= ride.seats_available %> <i class="fa-solid fa-person"></i></p>
+          <p><%= ride.date.day %>/<%= ride.date.month %>/<%= ride.date.year %></p>
+        </div>
+      </div>
     </div>
+    <% end %>
   <% end %>
 </div>
