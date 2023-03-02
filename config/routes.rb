@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   end
 
   patch "bookings/:id", to: "bookings#update", as: :update_comment_booking
-  resources :bookings, except: [:create, :update] do
+  delete "bookings/:id", to: "bookings#destroy", as: :destroy_booking
+
+  resources :bookings, except: [:create, :update, :destroy] do
     get :update_status
   end
   # On n'a pas besoin de nester, donc on le sort
