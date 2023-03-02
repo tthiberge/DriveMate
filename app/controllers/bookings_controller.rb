@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
     @booking.ride = @ride
     @booking.user = current_user
 
-     if @booking.save
+    if @booking.save
       redirect_to dashboard_path
     else
       # flash.alert("Au moins 10 caractères")
@@ -30,12 +30,48 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     authorize @booking
+    # raise
+    @booking.comment = params[:booking][:comment]
+    @booking.save
+    redirect_to request.referer # Renvoie vers la page d'avant mais recharge la page
   end
 
   def destroy
     @booking = Booking.find(params[:id])
     authorize @booking
   end
+
+  def update_status
+    @booking = Booking.find(params[:booking_id])
+    authorize @booking
+    @booking.status = params[:status]
+    @booking.save
+    if params[:status] == "Confirmed"
+      @booking.ride.bookings.excluding(@booking).each do |declined_booking|
+        declined_booking.status = "Declined"
+        declined_booking.save
+      end
+    end
+    redirect_to dashboard_path
+  end
+
+  # def status_to_confirmed
+  #   booking_confirmed = Booking.find(params[:id])
+  #   authorize booking_confirmed
+  #   booking_confirmed.status = "Confirmed"
+
+  #   # booking.ride.bookings.excluding(booking).each do |booking_declined|
+  #   #   booking_declined.status = "Declined"
+  #   # end
+  # end
+
+  # def status_to_declined
+  #   booking_declined = Booking.find(params[:id])
+  #   authorize booking_declined
+  #   booking_declined.status = "Declined"
+  # end
+
+
 
   private
 

@@ -36,5 +36,7 @@ class PagesController < ApplicationController
       end
       return @bookings_owner
     end
+
+
   end
 end

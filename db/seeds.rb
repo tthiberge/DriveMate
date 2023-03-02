@@ -67,6 +67,7 @@ booking1ter = Booking.new
 booking1ter.user = leo
 booking1ter.ride = ride1
 booking1ter.comment = "I am visiting family"
+# booking1ter.status = "Confirmed"
 booking1ter.save!
 
 booking2 = Booking.new
@@ -85,6 +86,7 @@ booking3bis = Booking.new
 booking3bis.user = theo
 booking3bis.ride = ride3
 booking3bis.comment = "I'm goint to visit the Versailles castle "
+booking3bis.status = "Declined"
 booking3bis.save
 
 booking4 = Booking.new
@@ -97,6 +99,7 @@ booking4bis = Booking.new
 booking4bis.user = theo
 booking4bis.ride = ride4
 booking4bis.comment = "Happy to help You, Happy You help me, I am a meticulous driver"
+booking4bis.status = "Confirmed"
 booking4bis.save
 
 booking5 = Booking.new
