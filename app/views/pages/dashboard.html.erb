@@ -70,10 +70,15 @@
         </div>
       </div>
 
-      <div class="as-driver", data-controller = "bookings">
-        <h4>I have a driving licence</h4>
+      <div class="as-driver", data-controller="bookings">
+
+        <div classe ="d-grid p-3 flex-row">
+          <h4>I have a driving licence</h4>
+          <div style="background-image: url('steering wheel.png')"><img src="app/assets/images/steering wheel.png" alt="steering wheel" style="width: 30px; height: 30px"></div>
+        </div>
+
         <div class="card p-3 m-1">
-          <p class="text-warning fw-bold">Pending bookings</p>
+          <p class="text-warning fw-bold" data-bookings-target="pending">Pending bookings</p>
             <% @driver_bookings.each do |booking|
             %>
               <% if booking.status == "Pending" %>
@@ -83,7 +88,7 @@
                   <i class="fa-solid fa-pencil" data-action="click->bookings#showForm"></i>
                 <% end %>
                 <button class="btn btn-primary" data-action="click->bookings#showForm"><i class="fa-solid fa-pencil"></i></button>
-                <p data-movies-target="form"><%= render "edit_booking_form", booking: booking %></p>
+                <%= render "edit_booking_form", booking: booking %>
                 <%# <p>J'impose ma variable locale, je lui dis que c'est la variable d'itération booking</p> %>
               <% end %>
             <% end %>
