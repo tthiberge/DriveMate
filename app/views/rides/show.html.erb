@@ -18,8 +18,8 @@
      <br><br>
       <% if Ride.find(params[:id]).user == current_user %>
         <div class="d-flex justify-content-end">
-          <%= link_to "Edit ride", edit_ride_path(@ride), class: "btn btn-dark me-md-3"%>
-          <%= link_to "Delete ride", ride_path(@ride), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-dark"%>
+          <%= link_to "Edit ride", edit_ride_path(@ride), class: "btn btn-dark-drivemate me-md-3"%>
+          <%= link_to "Delete ride", ride_path(@ride), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-dark-drivemate"%>
         </div>
       <% end %>
 
