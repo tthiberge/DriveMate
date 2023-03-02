@@ -17,6 +17,18 @@ class BookingPolicy < ApplicationPolicy
     (record.user == user)
   end
 
+  def update_status?
+    (record.ride.user == user)
+  end
+
+  # def status_to_confirmed?
+  #   (record.ride.user == user)
+  # end
+
+  # def status_to_declined?
+  #   (record.ride.user == user)
+  # end
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve

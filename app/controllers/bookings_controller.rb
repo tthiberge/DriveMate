@@ -37,6 +37,32 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
+  def update_status
+    @booking = Booking.find(params[:booking_id])
+    authorize @booking
+    @booking.status = params[:status]
+    @booking.save
+    redirect_to dashboard_path
+  end
+
+  # def status_to_confirmed
+  #   booking_confirmed = Booking.find(params[:id])
+  #   authorize booking_confirmed
+  #   booking_confirmed.status = "Confirmed"
+
+  #   # booking.ride.bookings.excluding(booking).each do |booking_declined|
+  #   #   booking_declined.status = "Declined"
+  #   # end
+  # end
+
+  # def status_to_declined
+  #   booking_declined = Booking.find(params[:id])
+  #   authorize booking_declined
+  #   booking_declined.status = "Declined"
+  # end
+
+
+
   private
 
   def booking_params
