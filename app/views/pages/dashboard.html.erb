@@ -20,7 +20,7 @@
           <% @owner_bookings.each do |confirmed|
           %>
             <% if confirmed.status == "Confirmed" %>
-              <li><strong><%= confirmed.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= confirmed.ride.arrival_location %></strong>  on <%= confirmed.ride.date %> with <strong><%= confirmed.user.first_name %></strong> (Driver candidate)</li>
+              <li><strong>< p%= confirmed.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= confirmed.ride.arrival_location %></strong>  on <%= confirmed.ride.date %> with <strong><%= confirmed.user.first_name %></strong> (Driver candidate)</li>
             <% end %>
           <% end %>
         </ul>
