@@ -9,7 +9,7 @@
           <p class="text-warning fw-bold">Pending bookings</p>
             <% current_user.rides.each do |ride| %>
 
-              <% if ride.bookings == []  %>
+              <% if !ride.bookings.pending_bookings.empty?  %>
                 <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> on <%= ride.date %></strong></p>
               <% end %>
               <% ride.bookings.each do |booking| %>
@@ -36,7 +36,10 @@
           <div class="card p-3 m-1">
             <p class="text-success fw-bold">Confirmed bookings</p>
               <% current_user.rides.each do |ride| %>
-                <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> on <%= ride.date %></strong></p>
+               <% if !ride.bookings.confirmed_bookings.empty?  %>
+                  <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> on <%= ride.date %></strong></p>
+                <% end %>
+
                 <% ride.bookings.each do |booking| %>
                     <% if booking.status == "Confirmed"  %>
                     <div>
@@ -51,7 +54,9 @@
           <div class="card p-3 m-1">
             <p class="text-danger fw-bold">Declined bookings</p>
             <% current_user.rides.each do |ride| %>
-                <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> on <%= ride.date %></strong></p>
+                 <% if !ride.bookings.declined_bookings.empty?  %>
+                  <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> on <%= ride.date %></strong></p>
+                <% end %>
                 <% ride.bookings.each do |booking| %>
                    <% if booking.status == "Declined" %>
                      <div>
@@ -72,7 +77,8 @@
             <% @driver_bookings.each do |booking|
             %>
               <% if booking.status == "Pending" %>
-                <p><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name %></strong> (Owner)</p>
+                <div><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name %></strong> (Owner)</div>
+                <div>"<%= booking.comment %>"</div>
               <% end %>
             <% end %>
         </div>
@@ -80,7 +86,8 @@
           <p class="text-success fw-bold">Confirmed bookings</p>
           <% @driver_bookings.each do |booking|%>
             <% if booking.status == "Confirmed" %>
-              <p><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name %></strong> (Owner)</p>
+              <div><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name %></strong> (Owner)</div>
+              <div>"<%= booking.comment %>"</div>
             <% end %>
           <% end %>
         </div>
@@ -89,7 +96,8 @@
           <p class="text-danger fw-bold">Declined bookings</p>
           <% @driver_bookings.each do |booking| %>
             <% if booking.status == "Declined" %>
-              <p><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name %></strong> (Owner)</p>
+              <div><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name %></strong> (Owner)</div>
+              <div>"<%= booking.comment %>"</div>
             <% end %>
           <% end %>
         </div>
