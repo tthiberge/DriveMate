@@ -1,9 +1,15 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
+
   def home
     if params[:query].present?
       @rides = Ride.search_full_text(params[:query])
+      if Ride.search_full_text(params[:query]).empty? && current_user.present?
+        @search_nill = "Sorry #{current_user.first_name.capitalize}, we don't have this destination yet"
+      elsif Ride.search_full_text(params[:query]).empty?
+        @search_nill = "Sorry, we don't have this destination yet."
+      end
     else
       @rides = Ride.all
     end
