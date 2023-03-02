@@ -37,7 +37,7 @@
                 <% ride.bookings.each do |booking| %>
                     <% if booking.status == "Confirmed"  %>
                     <div>
-                      <i class="fa-solid fa-car-side text-primary"></i> Ride with <%= booking.user.first_name %>
+                      <i class="fa-solid fa-car-side text-success"></i> Ride with <%= booking.user.first_name %>
                       <p>"<%= booking.comment %>"</p>
                     </div>
                     <% end %>
@@ -47,14 +47,17 @@
 
           <div class="card p-3 m-1">
             <p>Declined bookings</p>
-            <% @owner_bookings.each do |booking| %>
-              <% if booking.status == "Declined" %>
-                <div>
-                  <i class="fa-solid fa-car-side text-danger"></i> DECLINED riding with <%= booking.user.first_name %>
-                  <p>"<%= booking.comment %>"</p>
-                </div>
-              <% end %>
-            <% end %>
+            <% current_user.rides.each do |ride| %>
+                <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> on <%= ride.date %></strong></p>
+                <% ride.bookings.each do |booking| %>
+                   <% if booking.status == "Declined" %>
+                     <div>
+                        <i class="fa-solid fa-car-side text-danger"></i> DECLINED riding with <%= booking.user.first_name %>
+                        <p>"<%= booking.comment %>"</p>
+                      </div>
+                    <% end %>
+                 <% end %>
+                <% end %>
           </div>
         </div>
       </div>
@@ -88,9 +91,8 @@
           <% end %>
         </div>
         </div>
-      </div>
-    </div>
   </div>
+
 
   <div class="col-4">
     <div class="modify_profile">
