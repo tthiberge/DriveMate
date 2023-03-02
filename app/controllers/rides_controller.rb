@@ -2,7 +2,7 @@ class RidesController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
   def index
-    @rides = Ride.all
+    @rides = policy_scope(Ride)
     # The `geocoded` scope filters only rides with coordinates
     @markers = @rides.geocoded.map do |ride|
       {
