@@ -2,40 +2,27 @@
 
   <%# <p>NE FONCTIONNE PAS, VOIR AVEC TA MERCREDI MATIN</p> %>
   <div class="col-8">
-    <div class="text-center mb-5">
-      <h2>My Bookings</h2>
-    </div>
 
-    <div class="row">
-      <div class="as-owner col-6">
-        <div class = "d-flex justify-content-center">
-          <h4>I have a car</h4>
-        </div>
-
-        <div>
-          <p>Pending bookings</p>
-          <% @owner_bookings.each do |pending|%>
-            <% if pending.status == "pending" %>
-              <div class="card-product">
-                <p>From <strong><%= pending.ride.departure_location.capitalize %></strong></p>
-                <p>To <strong><%= pending.ride.arrival_location.capitalize %></strong></p>
-                <p>On <strong><%= pending.ride.date %></strong></p>
-                <p>With <strong><%= pending.user.first_name %></strong></p>
-              </div>
+    <h1>My Bookings</h1>
+    <div class="bookings-owners-drivers d-flex">
+      <div class="as-owner ">
+        <h4>I have a car</h4>
+        <p>Pending bookings</p>
+        <ul>
+          <% @owner_bookings.each do |pending|
+          %>
+            <% if pending.status == "Pending" %>
+              <li><strong><%= pending.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= pending.ride.arrival_location %></strong>  on <%= pending.ride.date %> with <strong><%= pending.user.first_name %></strong> (Driver candidate)</li>
             <% end %>
           <% end %>
-        </div>
+        </ul>
+        <p>Confirmed bookings</p>
+        <ul>
+          <% @owner_bookings.each do |confirmed|
+          %>
+            <% if confirmed.status == "Confirmed" %>
+              <li><strong>< p%= confirmed.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= confirmed.ride.arrival_location %></strong>  on <%= confirmed.ride.date %> with <strong><%= confirmed.user.first_name %></strong> (Driver candidate)</li>
 
-        <div>
-          <p>Confirmed bookings</p>
-          <% @owner_bookings.each do |confirmed|%>
-            <% if confirmed.status == "confirmed" %>
-              <div class="card-product">
-                <p>From <strong><%= pending.ride.departure_location.capitalize %></strong></p>
-                <p>To <strong><%= pending.ride.arrival_location.capitalize %></strong></p>
-                <p>On <strong><%= pending.ride.date %></strong></p>
-                <p>With <strong><%= pending.user.first_name %></strong></p>
-              </div>
             <% end %>
           <% end %>
         </div>
@@ -44,46 +31,33 @@
           <p>Declined bookings</p>
           <% @owner_bookings.each do |declined|%>
             <% if declined.status == "declined" %>
-              <div class="card-product">
-                <p>From <strong><%= pending.ride.departure_location.capitalize %></strong></p>
-                <p>To <strong><%= pending.ride.arrival_location.capitalize %></strong></p>
-                <p>On <strong><%= pending.ride.date %></strong></p>
-                <p>With <strong><%= pending.user.first_name %></strong></p>
-              </div>
+
+              <li><strong><%= declined.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= declined.ride.arrival_location %></strong>  on <%= declined.ride.date %> with <strong><%= declined.user.first_name %></strong> (Driver candidate)</li>
+
             <% end %>
           <% end %>
         </div>
       </div>
 
-      <div class="as-driver col-6">
-        <div class = "d-flex justify-content-center">
-          <h4>I have a driving licence</h4>
-        </div>
 
-        <div>
-          <p>Pending bookings</p>
-          <%@driver_bookings.each do |pending|%>
-            <% if pending.status == "pending" %>
-              <div class="card-product">
-                <p>From <strong><%= pending.ride.departure_location.capitalize %></strong></p>
-                <p>To <strong><%= pending.ride.arrival_location.capitalize %></strong></p>
-                <p>On <strong><%= pending.ride.date %></strong></p>
-                <p>With <strong><%= pending.user.first_name %></strong></p>
-              </div>
+      <div class="as-driver">
+        <h4>I have a driving licence</h4>
+        <p>Pending bookings</p>
+        <ul>
+          <% @driver_bookings.each do |pending|
+          %>
+            <% if pending.status == "Pending" %>
+              <li><strong><%= pending.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= pending.ride.arrival_location %></strong>  on <%= pending.ride.date %> with <strong><%= pending.ride.user.first_name %></strong> (Owner)</li>
             <% end %>
           <% end %>
-        </div>
+        </ul>
+        <p>Confirmed bookings</p>
+        <ul>
+          <% @driver_bookings.each do |confirmed|
+          %>
+            <% if confirmed.status == "Confirmed" %>
+              <li><strong><%= confirmed.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= confirmed.ride.arrival_location %></strong>  on <%= confirmed.ride.date %> with <strong><%= confirmed.ride.user.first_name %></strong> (Owner)</li>
 
-        <div>
-          <p>Confirmed bookings</p>
-          <% @driver_bookings.each do |confirmed|%>
-            <% if confirmed.status == "confirmed" %>
-              <div class="card-product">
-                <p>From <strong><%= pending.ride.departure_location.capitalize %></strong></p>
-                <p>To <strong><%= pending.ride.arrival_location.capitalize %></strong></p>
-                <p>On <strong><%= pending.ride.date %></strong></p>
-                <p>With <strong><%= pending.user.first_name %></strong></p>
-              </div>
             <% end %>
           <% end %>
         </div>
@@ -92,12 +66,9 @@
           <p>Declined bookings</p>
           <% @driver_bookings.each do |declined| %>
             <% if declined.status == "declined" %>
-              <div class="card-product">
-                <p>From <strong><%= pending.ride.departure_location.capitalize %></strong></p>
-                <p>To <strong><%= pending.ride.arrival_location.capitalize %></strong></p>
-                <p>On <strong><%= pending.ride.date %></strong></p>
-                <p>With <strong><%= pending.user.first_name %></strong></p>
-              </div>
+
+              <li><strong><%= declined.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= declined.ride.arrival_location %></strong>  on <%= declined.ride.date %> with <strong><%= declined.ride.user.first_name %></strong> (Owner)</li>
+
             <% end %>
           <% end %>
         </div>
