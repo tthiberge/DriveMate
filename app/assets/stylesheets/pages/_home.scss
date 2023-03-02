@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 .card-error-message {
  background-color: white;
-padding: 20px;
+  padding: 20px;
 }
 
 .add-ride-button {
@@ -11,15 +11,13 @@ margin-top: 20px;
 .form-outline {
   display: flex;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.5);
   padding: 5px;
-  border-radius: 20px;
-  width: 400px;
+  width: 1000px;
 }
 
 .form-outline label {
   margin: 10px;
-  color: #374177;
+  color: white;
 
 }
 
@@ -35,7 +33,21 @@ margin-top: 20px;
   background-color: #374177;
   border: none;
   color: white;
+  font-family: 'Roboto', sans-serif;
   padding: 10px 20px;
   border-radius: 50px;
   cursor: pointer;
+}
+
+.btn-white-text {
+  color: white;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  width: 200px;
+}
+
+.departure_arrival {
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
 }

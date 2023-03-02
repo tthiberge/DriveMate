@@ -2,21 +2,18 @@
 
 <%= @search_nill %>
 
-
-
-<div class = "d-flex justify-content-between">
- <h3>All Rides</h3>
+<div class = "d-flex justify-content-between rounded-pill" style="background-color: #374177">
   <%= form_tag(root_path, method: :get) do %>
     <div class="input-group">
       <div class="form-outline">
         <label for="site-search" placeholder="Search for destination"> <i class="fa-solid fa-magnifying-glass"></i> </label>
         <%= text_field_tag :query, nil, id: "site-search", class:"form-control", style:"margin-right: 20px" %>
         <%= submit_tag "Search"%>
+        <% if current_user.present? %>
+          <%= link_to "Add a ride", new_ride_path, class: "btn-white-text" %>
+        <% end %>
       </div>
     </div>
-  <% end %>
-  <% if current_user.present? %>
-    <%= link_to "Add a ride", new_ride_path, class: "btn btn-dark" %>
   <% end %>
 </div>
 
@@ -25,8 +22,10 @@
   <% @rides.each do |ride| %>
     <%= link_to ride_path(ride) do %>
     <div class="card-category d-flex flex-column m-2">
-      <div class="card-ride d-flex justify-content-center flex-grow-1"style="background-image: url('https://source.unsplash.com/random/?travel')">
-        <p class="white"><%= ride.departure_location.capitalize %> to <%= ride.arrival_location.capitalize %></p>
+      <div class="card-ride d-flex justify-content-center flex-grow-1"style="background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('https://source.unsplash.com/random/?travel')">
+      </div>
+      <div class="ride-way d-flex justify-content-center">
+          <p class="departure_arrival"><%= ride.departure_location.capitalize %> to <%= ride.arrival_location.capitalize %></p>
       </div>
       <div class="card-info d-flex justify-content-between">
         <div class="profile align-self-end">

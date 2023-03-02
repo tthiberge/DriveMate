@@ -1,9 +1,11 @@
-<ul>
-  <li>Description:  <%= ride.description %></li>
-  <li>Car Type:       <%= ride.car_type %></li>
-  <li>Owner Presence: <%= ride.owner_presence%></li>
-  <li>Seat_available:  <%= ride.seats_available %></li>
-  <li>Departure date:  <%= ride.date %></li>
-  <li>Departure location:  <%= ride.departure_location %></li>
-  <li>Arrival location:  <%= ride.arrival_location %></li>
-</ul>
+<%= link_to ride_path(ride) do %>
+  <ul>
+    <li>To <%= ride.arrival_location %></li>
+    <li>On <%= ride.date %></li>
+    <li>Car Type: <%= ride.car_type %></li>
+    <li>Owner presence: <%= ride.owner_presence%></li>
+    <li>Seat(s) available: <%= ride.seats_available %></li>
+    <li>Description:  <%= ride.description %></li>
+    <li>From <%= ride.departure_location %></li>
+  </ul>
+<% end %>
