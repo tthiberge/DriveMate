@@ -15,6 +15,7 @@
         <%= @ride.user.first_name.capitalize %>
       </div>
 
+     <br><br>
       <% if Ride.find(params[:id]).user == current_user %>
         <div class="d-flex justify-content-end">
           <%= link_to "Edit ride", edit_ride_path(@ride), class: "btn btn-dark me-md-3"%>
@@ -51,8 +52,8 @@
           placeholder: "Say hi and let the owner knows why you would be the best driver !",
           hint: "Your comment must be at least 10 characters"
           %>
-          <div class="d-flex justify-content-center">
-            <%= f.submit "I want to drive this car!", class: "btn btn-dark" %>
+          <div class="d-flex justify-content-center buttonshow">
+            <%= f.submit "I want to drive this car!", class: "btn btn-success" %>
           </div>
         <% end %>
       </div>
@@ -61,8 +62,16 @@
 
    <br><br><br>
 
+
+   <div class = "private">
+
+
   <% if !current_user %>
     <p>Log in or Sign up to be the driver of this car!</p>
+    <%= link_to "Log in", new_user_session_path, class: "btn btn-success" %>
+    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-warning" %>
+
   <% end %>
+  </div>
 
 </div>

@@ -42,9 +42,9 @@ class ApplicationPolicy
       @scope = scope
     end
 
-    def resolve
-      NotImplementedError, "You must define #resolve in #{self.class}"
-    end
+    # def resolve
+    #   NotImplementedError, "You must define #resolve in #{self.class}"
+    # end
 
     private
 
