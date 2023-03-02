@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[create]
   end
 
-  resources :bookings, except: [:create] do
+  patch "bookings/:id", to: "bookings#update", as: :update_comment_booking
+  resources :bookings, except: [:create, :update] do
     get :update_status
   end
   # On n'a pas besoin de nester, donc on le sort

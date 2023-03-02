@@ -70,7 +70,7 @@
         </div>
       </div>
 
-      <div class="as-driver">
+      <div class="as-driver", data-controller = "bookings">
         <h4>I have a driving licence</h4>
         <div class="card p-3 m-1">
           <p class="text-warning fw-bold">Pending bookings</p>
@@ -79,6 +79,12 @@
               <% if booking.status == "Pending" %>
                 <div><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name %></strong> (Owner)</div>
                 <div>"<%= booking.comment %>"</div>
+                <%= link_to "#" do  %>
+                  <i class="fa-solid fa-pencil" data-action="click->bookings#showForm"></i>
+                <% end %>
+                <button class="btn btn-primary" data-action="click->bookings#showForm"><i class="fa-solid fa-pencil"></i></button>
+                <p data-movies-target="form"><%= render "edit_booking_form", booking: booking %></p>
+                <%# <p>J'impose ma variable locale, je lui dis que c'est la variable d'itération booking</p> %>
               <% end %>
             <% end %>
         </div>

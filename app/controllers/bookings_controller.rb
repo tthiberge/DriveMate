@@ -30,7 +30,9 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     authorize @booking
-
+    # raise
+    @booking.comment = params[:booking][:comment]
+    @booking.save
     redirect_to request.referer # Renvoie vers la page d'avant mais recharge la page
   end
 
