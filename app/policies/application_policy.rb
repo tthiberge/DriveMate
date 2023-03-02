@@ -43,7 +43,9 @@ class ApplicationPolicy
     end
 
     # def resolve
-    #   raise NotImplementedError, "You must define #resolve in #{self.class}"
+
+    #   NotImplementedError, "You must define #resolve in #{self.class}"
+
     # end
 
     private
