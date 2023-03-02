@@ -67,6 +67,7 @@ booking1ter = Booking.new
 booking1ter.user = leo
 booking1ter.ride = ride1
 booking1ter.comment = "I am visiting family"
+booking1ter.status = "Confirmed"
 booking1ter.save!
 
 booking2 = Booking.new
