@@ -1,0 +1,4 @@
+<%= simple_form_for(booking, url: update_comment_booking_path(booking), method: :patch, class: "d-none") do |f| %>
+  <%= f.input :comment, label: "What do you want to add to the Owner?" %>
+  <%= f.submit class: "btn btn-primary"%>
+<% end %>
