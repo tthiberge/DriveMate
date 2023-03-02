@@ -1,0 +1,13 @@
+
+production:
+  cloud_name: "dei9a2fnc"
+  api_key: "228347542539615"
+  api_secret: "gy9zjb8VJivL4_2fk66L9pNuXW4"
+  secure: true
+
+
+development:
+  cloud_name: "dei9a2fnc"
+  api_key: "228347542539615"
+  api_secret: "gy9zjb8VJivL4_2fk66L9pNuXW4"
+  secure: true
