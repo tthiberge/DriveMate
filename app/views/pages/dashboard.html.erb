@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-8">
+
     <h1>My Bookings</h1>
     <div class="bookings-owners-drivers d-flex">
       <div class="as-owner w-30 ">
@@ -51,6 +52,7 @@
         </div>
 
 
+
       <div class="as-driver">
         <h4>I have a driving licence</h4>
         <p>Pending bookings</p>
@@ -66,6 +68,7 @@
         <ul>
           <% @driver_bookings.each do |booking|
           %>
+<<<<<<< HEAD
             <% if booking.status == "Confirmed" %>
               <li><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name %></strong> (Owner)</li>
             <% end %>
@@ -76,18 +79,34 @@
           <% @driver_bookings.each do |booking| %>
             <% if booking.status == "declined" %>
               <li><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name %></strong> (Owner)</li>
+=======
+            <% if confirmed.status == "Confirmed" %>
+              <li><strong><%= confirmed.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= confirmed.ride.arrival_location %></strong>  on <%= confirmed.ride.date %> with <strong><%= confirmed.ride.user.first_name %></strong> (Owner)</li>
+
             <% end %>
           <% end %>
-        </ul>
+        </div>
+
+        <div>
+          <p>Declined bookings</p>
+          <% @driver_bookings.each do |declined| %>
+            <% if declined.status == "declined" %>
+
+              <li><strong><%= declined.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= declined.ride.arrival_location %></strong>  on <%= declined.ride.date %> with <strong><%= declined.ride.user.first_name %></strong> (Owner)</li>
+
+>>>>>>> master
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="col-4">
     <div class="modify_profile">
-        <%= link_to edit_user_registration_path, class: "nav-link" do %>
-          <i class="fa-solid fa-pen"></i>
-        <% end %>
+      <%= link_to edit_user_registration_path, class: "nav-link" do %>
+        <i class="fa-solid fa-pen"></i>
+      <% end %>
     </div>
 
     <table class="table">
@@ -147,10 +166,7 @@
       </tbody>
     </table>
   </div>
-
-
-  <%# <p> Placeholder for creating a button sending to resetting the paswword via devise</p>
- %>
+  <%# <p> Placeholder for creating a button sending to resetting the paswword via devise</p>%>
 </div>
 
 
