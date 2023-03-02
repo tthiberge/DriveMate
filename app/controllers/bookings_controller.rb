@@ -42,10 +42,10 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.status = params[:status]
     @booking.save
-    @booking.ride.bookings.excluding(@booking).each do |declined_booking|
-      declined_booking.status = "Declined"
-      declined_booking.save
-    end
+    # @booking.ride.bookings.excluding(@booking).each do |declined_booking|
+    #   declined_booking.status = "Declined"
+    #   declined_booking.save
+    # end
     redirect_to dashboard_path
   end
 
