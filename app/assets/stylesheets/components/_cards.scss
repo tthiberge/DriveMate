@@ -1,28 +1,16 @@
-.container {
-  background-color: white;
-  margin: 40px;
-  border-radius: 15px;
-}
-
 .card-category {
-  background-size: cover;
-  background-position: center;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
+  height: 250px;
+  color: black;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border: 1px solid #c3c3c3;
 }
 
 .cards {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   margin-bottom: 20px;
   -webkit-overflow-scrolling: touch;
 }
@@ -37,16 +25,8 @@
   text-decoration: none;
 }
 
-.card-trip {
-  flex: 1;
-  margin: 5px;
-  position: relative;
-}
-
 .card-category {
   position: relative;
-  background-image: url(https://images.unsplash.com/photo-1533998839656-76f5e4b2bccb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80) ;
-
 }
 
 .card-departure {
@@ -59,4 +39,72 @@
   position: absolute;
   bottom: 20px;
   right: 20px;
+}
+
+.card-trip {
+  flex: 1;
+  width: 95%;
+  margin: 10px;
+  position: relative;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-trip > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-trip h2 {
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-trip p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-trip .card-trip-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-trip-infos .card-trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+
+.seats-date {
+  p {
+    margin: 0;
+  }
+
+  .nb-seat{
+    float: right;
+  }
+}
+
+.ride-s-way{
+  position: absolute;
+  top: 5%;
+  left: 38%;
+  font-size: 100px;
+  color: white;
+  transform: rotate(40deg);
+}
+
+.card-ride {
+  background-color: lightgrey;
+  padding: 5px;
+  border-radius: 5px;
 }
