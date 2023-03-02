@@ -2,8 +2,8 @@
   <div class="col-8">
 
     <h1>My Bookings</h1>
-    <div class="bookings-owners-drivers d-flex">
-      <div class="as-owner w-30 ">
+    <div class="bookings-owners-drivers d-flex ">
+      <div class="as-owner  ">
         <h4>I have a car</h4>
         <div class="card p-3 m-1">
           <p>Pending bookings</p>
@@ -14,11 +14,11 @@
                   <div class="d-flex flex-column">
                     <div class="d-flex ">
                       <div>
-                        <%= link_to booking_update_status_path(booking, status: "Confirmed") do  %>
-                        <i class="fa-solid fa-square-check m-1 text-success"></i>
+                        <%= link_to booking_update_status_path(booking, status: "Confirmed", status_opposite: "Declined" ) do  %>
+                          <i class="fa-solid fa-square-check m-1 text-success"></i>
                         <% end %>
                         <%= link_to booking_update_status_path(booking, status: "Declined") do  %>
-                        <i class="fa-solid fa-square-xmark m-1 text-danger"></i>
+                          <i class="fa-solid fa-square-xmark m-1 text-danger"></i>
                         <% end %>
                       </div>
                       <div><%= booking.user.first_name %></div>
@@ -48,14 +48,16 @@
           <div class="card p-3 m-1">
             <p>Declined bookings</p>
             <% @owner_bookings.each do |booking| %>
-              <% if booking.status == "declined" %>
-                <li><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.user.first_name %></strong> (Driver candidate)</li>
+              <% if booking.status == "Declined" %>
+                <div>
+                  <i class="fa-solid fa-car-side text-danger"></i> DECLINED riding with <%= booking.user.first_name %>
+                  <p>"<%= booking.comment %>"</p>
+                </div>
               <% end %>
             <% end %>
           </div>
         </div>
-
-
+      </div>
 
       <div class="as-driver">
         <h4>I have a driving licence</h4>
@@ -77,13 +79,14 @@
           <% end %>
         </div>
 
-        <p>Declined bookings</p>
-        <ul>
+        <div class="card p-3 m-1">
+          <p>Declined bookings</p>
           <% @driver_bookings.each do |booking| %>
-            <% if booking.status == "declined" %>
+            <% if booking.status == "Declined" %>
               <li><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name %></strong> (Owner)</li>
             <% end %>
           <% end %>
+        </div>
         </div>
       </div>
     </div>
