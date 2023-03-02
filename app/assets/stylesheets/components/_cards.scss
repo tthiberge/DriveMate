@@ -1,10 +1,7 @@
 .card-category {
   height: 250px;
   color: black;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  padding: 10px;
   border: 1px solid #c3c3c3;
 }
 
@@ -44,7 +41,6 @@
 .card-trip {
   flex: 1;
   width: 95%;
-  margin: 10px;
   position: relative;
   overflow: hidden;
   background: white;
@@ -98,13 +94,16 @@
   position: absolute;
   top: 5%;
   left: 38%;
-  font-size: 100px;
+  font-size: 36px;
   color: white;
-  transform: rotate(40deg);
 }
 
 .card-ride {
-  background-color: lightgrey;
   padding: 5px;
-  border-radius: 5px;
+}
+
+.card-info {
+  padding: 10px;
+  background-color: #E2F3FF;
+  color: #374177;
 }

@@ -1,4 +1,4 @@
-.btn-ghost {
+.btn-ghost{
   color: #4A4A4A;
   border: 1px solid #4A4A4A;
   padding: 8px 24px;
@@ -10,4 +10,84 @@
 
 .btn-ghost:hover {
   opacity: 1;
+}
+
+
+/* CSS */
+.buttonshow-drivemate {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.buttonshow-drivemate:hover,
+.buttonshow-drivemate:focus {
+  background-color: #F082AC;
+}
+
+.private {
+
+  .btn-drivemate {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .btn-success-drivemate {
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #28a745;
+  }
+
+  .btn-success-drivemate:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+
+  .btn-warning-drivemate {
+    color: #fff;
+    background-color: #ffc107;
+    border: 1px solid #ffc107;
+  }
+
+  .btn-warning-drivemate:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+  }
+
+
+
+.btn-dark-blue {
+  background-color: #374177;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
 }

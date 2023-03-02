@@ -46,7 +46,7 @@ ride4 = Ride.new(description: "Help an old man to go to La Vallée Village", car
 ride4.user = joy
 ride4.save
 
-ride5 = Ride.new(description: "Trajet quotidien Etiolles/Levallois", car_type: "MINI Countryman", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Etiolles", arrival_location: "Levallois")
+ride5 = Ride.new(description: "Trajet quotidien Etiolles/Levallois en passant par Paris", car_type: "MINI Countryman", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Etiolles", arrival_location: "Levallois")
 ride5.user = sara
 ride5.save
 
@@ -109,3 +109,8 @@ booking5.comment = "Let's commute together"
 booking5.save
 
 puts "Seeded"
+
+require 'faker'
+Faker::LoremFlickr.image(size: "800x800", search_terms: ['landscape']) #=> "https://loremflickr.com/800/800/landscape"
+
+Faker::Images::Landscapes

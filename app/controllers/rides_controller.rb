@@ -1,6 +1,18 @@
 class RidesController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
 
+  def index
+    @rides = policy_scope(Ride)
+    # The `geocoded` scope filters only rides with coordinates
+    @markers = @rides.geocoded.map do |ride|
+      {
+        lat: ride.latitude,
+        lng: ride.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {ride: ride})
+      }
+    end
+  end
+
   def show
     @ride = Ride.find(params[:id])
     @booking = Booking.new
