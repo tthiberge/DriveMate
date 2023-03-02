@@ -2,8 +2,11 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    # @rides = Ride.all
-    @rides = policy_scope(Ride)
+    if params[:query].present?
+      @rides = Ride.search_full_text(params[:query])
+    else
+      @rides = Ride.all
+    end
   end
 
   def dashboard
