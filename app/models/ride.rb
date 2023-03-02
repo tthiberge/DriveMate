@@ -2,6 +2,8 @@ class Ride < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
 
+  geocoded_by :departure_location
+  after_validation :geocode, if: :will_save_change_to_departure_location?
   #include PgSearch::Model
   #pg_search_scope :search_by_departure_location_and_arrival_location,
  # against: [ :departure_location, :arrival_location ],
