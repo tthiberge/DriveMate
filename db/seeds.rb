@@ -41,7 +41,7 @@ ride2.save
 ride3 = Ride.new(description: "RTT for Versailles from Paris", car_type: "BMW Série 1 ", owner_presence: true, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Versailles", arrival_location: "Versailles")
 ride3.user = maung
 ride3.save
-M
+
 ride4 = Ride.new(description: "Help an old man to go to La Vallée Village", car_type: "Mercedes Classe C", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Paris", arrival_location: "Mall")
 ride4.user = joy
 ride4.save
