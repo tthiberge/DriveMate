@@ -113,4 +113,4 @@ puts "Seeded"
 require 'faker'
 Faker::LoremFlickr.image(size: "800x800", search_terms: ['landscape']) #=> "https://loremflickr.com/800/800/landscape"
 
-Faker::Images::Landscapes
+# Faker::Images::Landscapes
