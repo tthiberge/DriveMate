@@ -50,6 +50,9 @@ ride5 = Ride.new(description: "Trajet quotidien Fontainebleau/Levallois en passa
 ride5.user = sara
 ride5.save
 
+ride1 = Ride.new(description: "Yangon-Mandalay", car_type: "Renault Clio", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Yangon", arrival_location: "Mandalay")
+ride1.user = theo
+ride1.save
 # bookings with user id && ride id && comment
 booking1 = Booking.new
 booking1.user = diane
