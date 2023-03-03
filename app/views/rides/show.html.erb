@@ -74,7 +74,7 @@
 
       <%# N'affiche de pouvoir postuler que si on a le permis dans son espace client %>
       <% if current_user %>
-        <% if current_user.driving_licence %>
+        <% if current_user.driving_licence && current_user != @ride.user %>
           <div>
           <br><br>
             <p>Do you want to be the driver for this ride ?</p>
