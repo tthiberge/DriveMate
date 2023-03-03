@@ -1,6 +1,7 @@
-<div class= "d-none" data-bookings-target="form">
-  <%= simple_form_for(booking, url: update_comment_booking_path(booking), method: :patch) do |f| %>
+<%# <div class= "d-none" data-bookings-target="form">
+<p>OU ALORS JE METS EN ERB CI-DESSOUS LAUTRE FACON DE DEFINIR MON DATA-TARGET</p> %>
+  <%= simple_form_for(booking, url: update_comment_booking_path(booking), method: :patch, data: {bookings_target: "form"}, class: "d-none") do |f| %>
     <%= f.input :comment, label: "What do you want to add to the Owner?" %>
     <%= f.submit class: "btn btn-primary"%>
   <% end %>
-</div>
+<%# </div> %>

@@ -10,6 +10,5 @@ export default class extends Controller {
 
   showForm() {
     this.formTarget.classList.toggle("d-none")
-    this.pendingTarget.innerText = "Yeah"
     }
 }
