@@ -89,34 +89,34 @@
     </div>
   </div>
 
-  <div class="col-12 col-lg-6">
+  <div class="col-12 col-lg-6" data-controller="bookings">
     <div class="title-show d-flex justify-content-center">
       <h4>I have a driving licence</h4>
     </div>
     <div class="title-rides d-flex justify-content-center">
       <p data-bookings-target="pending">Pending Bookings</p>
     </div>
-    <div class="rides-cards" style="position: relative;">
+    <div class="rides-cards" >
       <% @driver_bookings.each do |booking|%>
         <% if booking.status == "Pending" %>
-          <%= link_to "#", data: {action: "click->bookings#showForm"} do  %>
-            <i class="fa-solid fa-pencil text-body" style="position: absolute; top: 16px; right: 46px;"></i>
-          <% end %>
-          <div class="title-ride-dashboard">
+          <div class="title-ride-dashboard" style="position: relative;">
             <p><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong> </p>
             <p>on <%= booking.ride.date %></p>
             <p>with <%= booking.ride.user.first_name.capitalize %></p>
+            <%= link_to "#", data: {action: "click->bookings#showForm"} do  %>
+              <i class="fa-solid fa-pencil text-body" style="position: absolute; top: 7px; right: 32px;"></i>
+            <% end %>
             <%= link_to destroy_booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-              <i class="fa-solid fa-circle-xmark remove text-danger" style="position: absolute; top: 16px; right: 16px;"></i>
+              <i class="fa-solid fa-circle-xmark remove text-danger" style="position: absolute; top: 7px; right: 9px;"></i>
             <% end %>
             <%= render "edit_booking_form", booking: booking %>
           </div>
             <p>"<%= booking.comment %>"</p>
 
 
-          <%# <div class="d-flex justify-content-end"> %>
-            <%# <button class="btn btn-outline-primary" data-action="click->bookings#showForm" style="width: min-content;"><i class="fa-solid fa-pencil"></i></button> %>
-          <%# </div> %>
+          <%# <div class="d-flex justify-content-end">
+            <button class="btn btn-outline-primary" data-action="click->bookings#showForm" style="width: min-content;"><i class="fa-solid fa-pencil"></i></button>
+          </div> %>
 
 
         <% end %>
