@@ -42,7 +42,7 @@ ride3 = Ride.new(description: "RTT for Versailles from Paris", car_type: "BMW S�
 ride3.user = maung
 ride3.save
 
-ride4 = Ride.new(description: "Help an old man to go to La Vallée Village", car_type: "Mercedes Classe C", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Paris", arrival_location: "Mall")
+ride4 = Ride.new(description: "Help an old man to go to Evreux", car_type: "Mercedes Classe C", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Caen", arrival_location: "Evreux")
 ride4.user = joy
 ride4.save
 
@@ -50,9 +50,10 @@ ride5 = Ride.new(description: "Trajet quotidien Fontainebleau/Levallois en passa
 ride5.user = sara
 ride5.save
 
-ride1 = Ride.new(description: "Yangon-Mandalay", car_type: "Renault Clio", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Yangon", arrival_location: "Mandalay")
-ride1.user = theo
-ride1.save
+ride6 = Ride.new(description: "Yangon-Mandalay", car_type: "Renault Clio", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Yangon", arrival_location: "Mandalay")
+ride6.user = joy
+ride6.save
+
 # bookings with user id && ride id && comment
 booking1 = Booking.new
 booking1.user = diane
@@ -73,11 +74,12 @@ booking1ter.comment = "I am visiting family"
 # booking1ter.status = "Confirmed"
 booking1ter.save!
 
-booking2 = Booking.new
-booking2.user = theo
-booking2.ride = ride2
-booking2.comment = "I'm going home"
-booking2.save
+# Temporaire, pour ne pas avoir le comment lors de la présentation
+# booking2 = Booking.new
+# booking2.user = theo
+# booking2.ride = ride2
+# booking2.comment = "I'm going home"
+# booking2.save
 
 booking3 = Booking.new
 booking3.user = maung
