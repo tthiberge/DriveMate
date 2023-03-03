@@ -6,10 +6,11 @@ export default class extends Controller {
 
   connect() {
     console.log("hello wld");
+    // this.formTarget.classList.add("d-none")
   }
 
-  showForm() {
+  showForm(event) {
+    event.preventDefault()
     this.formTarget.classList.toggle("d-none")
-    this.pendingTarget.innerText = "Yeah"
     }
 }

@@ -26,7 +26,6 @@ class Ride < ApplicationRecord
   private
 
   def geocode
-
     departure_results = Geocoder.search(departure_location).first
     self.latitude = departure_results.data["lat"]
     self.longitude = departure_results.data["lon"]
