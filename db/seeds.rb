@@ -34,22 +34,25 @@ ride1 = Ride.new(description: "Paris-Marseille", car_type: "Renault Clio", owner
 ride1.user = theo
 ride1.save
 
-ride2 = Ride.new(description: "Coming back from vacations, I have 1 suitcase in my car trunk", car_type: "Range Rover Evoque", owner_presence: true, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Sables d'Olonne", arrival_location: "Reims")
+ride2 = Ride.new(description: "Coming back from vacations, I have 1 suitcase in my car trunk", car_type: "Range Rover Evoque", owner_presence: true, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Cannes", arrival_location: "Reims")
 ride2.user = diane
 ride2.save
 
-ride3 = Ride.new(description: "RTT for Versailles from Paris", car_type: "BMW Série 1 ", owner_presence: true, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Versailles", arrival_location: "Versailles (via Paris)")
+ride3 = Ride.new(description: "RTT for Versailles from Paris", car_type: "BMW Série 1 ", owner_presence: true, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Versailles", arrival_location: "Versailles")
 ride3.user = maung
 ride3.save
 
-ride4 = Ride.new(description: "Help an old man to go to La Vallée Village", car_type: "Mercedes Classe C", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Paris", arrival_location: "La Vallée Village")
+ride4 = Ride.new(description: "Help an old man to go to La Vallée Village", car_type: "Mercedes Classe C", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Paris", arrival_location: "Mall")
 ride4.user = joy
 ride4.save
 
-ride5 = Ride.new(description: "Trajet quotidien Etiolles/Levallois en passant par Paris", car_type: "MINI Countryman", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Etiolles", arrival_location: "Levallois")
+ride5 = Ride.new(description: "Trajet quotidien Fontainebleau/Levallois en passant par Paris", car_type: "MINI Countryman", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Fontainebleau", arrival_location: "Levallois")
 ride5.user = sara
 ride5.save
 
+ride1 = Ride.new(description: "Yangon-Mandalay", car_type: "Renault Clio", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Yangon", arrival_location: "Mandalay")
+ride1.user = theo
+ride1.save
 # bookings with user id && ride id && comment
 booking1 = Booking.new
 booking1.user = diane
