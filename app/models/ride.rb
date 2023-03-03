@@ -26,13 +26,16 @@ class Ride < ApplicationRecord
   private
 
   def geocode
+
     departure_results = Geocoder.search(departure_location).first
     self.latitude = departure_results.data["lat"]
     self.longitude = departure_results.data["lon"]
-    self.departure_location = departure_results.data["display_name"]
+    self.departure_location = departure_results.data.dig("address","city")
+    self.departure_results = departure_results.data
     arrival_results = Geocoder.search(arrival_location).first
     self.arrival_latitude = arrival_results.data["lat"]
     self.arrival_longitude = arrival_results.data["lon"]
-    self.arrival_location = arrival_results.data["display_name"]
+    self.arrival_location = arrival_results.data.dig("address","city")
+    self.arrival_results = arrival_results.data
   end
 end

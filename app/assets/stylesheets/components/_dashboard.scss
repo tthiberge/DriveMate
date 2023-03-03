@@ -32,3 +32,26 @@
   margin-bottom: 0;
   margin-top: 8px;
 }
+
+.title-rides {
+  background-color: #374177;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  align-items: center;
+  margin-bottom: 10px;
+  // text-align: center;
+  p{
+    margin: 0;
+  }
+}
+
+.rides-cards {
+  background-color: #E2F3FF;
+  border: none;
+  color:black;
+  padding: 2px 20px;
+  align-items: center;
+  margin-bottom: 10px;
+}
