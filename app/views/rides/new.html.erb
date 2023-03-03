@@ -2,19 +2,17 @@
   <h1>Add a new ride</h1>
 </div>
 
-<div class="container" style="height:500px">
-  <div class="row justify-content-center">
-    <div class="col-12 col-lg-6">
-      <%= simple_form_for @ride do |f| %>
-        <%= f.input :date, as: :date %>
-        <%= f.input :departure_location, class: "d-none" %>
-        <%= f.input :arrival_location, class: "d-none" %>
-        <%= f.input :seats_available %>
-        <%= f.input :car_type %>
-        <%= f.input :owner_presence, as: :select, collection: [['Yes',true], ['No',false]], required: true %>
-        <%= f.input :description %>
-        <%= f.submit class: "btn btn-dark" %>
-      <% end %>
-    </div>
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-6">
+    <%= simple_form_for @ride do |f| %>
+      <%= f.input :date, as: :date %>
+      <%= f.input :departure_location, class: "d-none" %>
+      <%= f.input :arrival_location, class: "d-none" %>
+      <%= f.input :seats_available %>
+      <%= f.input :car_type %>
+      <%= f.input :owner_presence, as: :select, collection: [['Yes',true], ['No',false]], required: true %>
+      <%= f.input :description %>
+      <%= f.submit class: "btn btn-dark" %>
+    <% end %>
   </div>
 </div>

@@ -1,64 +1,62 @@
-<div class="container text-center mb-3">
+<div class="text-center mb-3">
   <h1>Sign up</h1>
 </div>
 
-<div class="container" style="height:500px">
-  <div class="row justify-content-center">
-    <div class="col-12 col-lg-6">
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
-        <%= f.error_notification %>
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-6">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
+      <%= f.error_notification %>
 
-        <div class="form-inputs">
-          <%= f.input :first_name,
-                      label: false, # POUR ENLEVER LE LABEL
-                      required: true,
-                      autofocus: true,
-                      placeholder: "first name" # PLACEHOLDER
-                      # input_html: { autocomplete: "first name" } INUTILE
-                      %>
-          <%= f.input :last_name,
-                      required: true,
-                      autofocus: true%>
-          <%= f.input :email,
-                      required: true,
-                      autofocus: true %>
-          <%= f.input :password,
-                      required: true,
-                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-          <%= f.input :password_confirmation,
-                      required: true %>
-          <%= f.input :driving_licence,
-                      as: :select, collection: [['Yes',true], ['No',false]],
-                      required: true,
-                      # include_blank: false,
-                      autofocus: true,
-                      prompt: "Do you have a driving licence?" %>
-          <%= f.input :driving_licence_info,
-                      required: true,
-                      autofocus: true %>
-          <%= f.input :car_owner,
-                      as: :select, collection: [['Yes',true], ['No',false]],
-                      required: true,
-                      # include_blank: false,
-                      autofocus: true,
-                      prompt: "Select a movie" %>
-          <%= f.input :gearbox,
-                      as: :select, collection: [['Automatic'], ['Manual']],
-                      required: true,
-                      autofocus: true,
-                      prompt: "Select the type of gearbox" %>
-          <%= f.input :car_owner_info,
-                      required: true,
-                      autofocus: true%>
-          <%= f.input :description,
-                      autofocus: true %>
-          <%= f.input :photo, as: :file %>
-        </div>
+      <div class="form-inputs">
+        <%= f.input :first_name,
+                    label: false, # POUR ENLEVER LE LABEL
+                    required: true,
+                    autofocus: true,
+                    placeholder: "first name" # PLACEHOLDER
+                    # input_html: { autocomplete: "first name" } INUTILE
+                    %>
+        <%= f.input :last_name,
+                    required: true,
+                    autofocus: true%>
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true %>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+        <%= f.input :password_confirmation,
+                    required: true %>
+        <%= f.input :driving_licence,
+                    as: :select, collection: [['Yes',true], ['No',false]],
+                    required: true,
+                    # include_blank: false,
+                    autofocus: true,
+                    prompt: "Do you have a driving licence?" %>
+        <%= f.input :driving_licence_info,
+                    required: true,
+                    autofocus: true %>
+        <%= f.input :car_owner,
+                    as: :select, collection: [['Yes',true], ['No',false]],
+                    required: true,
+                    # include_blank: false,
+                    autofocus: true,
+                    prompt: "Select a movie" %>
+        <%= f.input :gearbox,
+                    as: :select, collection: [['Automatic'], ['Manual']],
+                    required: true,
+                    autofocus: true,
+                    prompt: "Select the type of gearbox" %>
+        <%= f.input :car_owner_info,
+                    required: true,
+                    autofocus: true%>
+        <%= f.input :description,
+                    autofocus: true %>
+        <%= f.input :photo, as: :file %>
+      </div>
 
-        <div class="form-actions">
-          <%= f.button :submit, "Sign up", class: "btn btn-ghost" %>
-        </div>
-      <% end %>
-    </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up", class: "btn btn-ghost" %>
+      </div>
+    <% end %>
   </div>
 </div>

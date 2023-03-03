@@ -9,6 +9,9 @@ export default class extends Controller {
   }
 
   connect() {
+    console.log(this.element)
+    console.log(this.apiKeyValue)
+    console.log(this.markersValue)
     mapboxgl.accessToken = this.apiKeyValue
     console.log(this.markersValue)
     this.map = new mapboxgl.Map({
@@ -17,8 +20,22 @@ export default class extends Controller {
     })
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-    this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }))
+    this.map.addControl(new MapboxGeocoder({ accessToken: this.apiKeyValue, mapboxgl: mapboxgl }))
+    this.map.addControl(
+      new MapboxDirections({
+        accessToken: this.apiKeyValue
+      }),
+      'top-left'
+      );
   }
+
+  // 1. tu caches la recherche de droite
+  // quand je me connecte
+  // après avoir loadé la map
+  // récupérer l'adresse de départ & l'adresse d'arrivée
+  // les mettre dans les input de départ & d'arrivée de la carte
+  // document.querySelector('.mapboxgl-ctrl-geocoder input')
+  // document.querySelector('.mapbox-directions-destination input')
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {

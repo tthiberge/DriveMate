@@ -16,6 +16,18 @@ class RidesController < ApplicationController
   def show
     @ride = Ride.find(params[:id])
     @booking = Booking.new
+    @markers = [
+      {
+        lat: @ride.latitude,
+        lng: @ride.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {ride: @ride})
+      },
+      {
+        lat: @ride.arrival_latitude,
+        lng: @ride.arrival_longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {ride: @ride})
+      }
+    ]
     authorize @ride
     # Je ne comprends pas très bien pourquoi ça marche quand même sans ajouter authorize @booking
     # car on est dans le rides_controller donc ici on n'a besoin d'autoriser que des instances de ride
