@@ -29,12 +29,38 @@ class Ride < ApplicationRecord
     departure_results = Geocoder.search(departure_location).first
     self.latitude = departure_results.data["lat"]
     self.longitude = departure_results.data["lon"]
-    self.departure_location = departure_results.data.dig("address","city")
+
+    departure_location_address(departure_results)
     self.departure_results = departure_results.data
     arrival_results = Geocoder.search(arrival_location).first
     self.arrival_latitude = arrival_results.data["lat"]
     self.arrival_longitude = arrival_results.data["lon"]
-    self.arrival_location = arrival_results.data.dig("address","city")
+    arrival_location_address(arrival_results)
+
     self.arrival_results = arrival_results.data
+  end
+
+  def arrival_location_address(arrival_results)
+    if arrival_results.data.dig("address","city")
+      self.arrival_location = arrival_results.data.dig("address", "city")
+    elsif arrival_results.data.dig("address","town")
+      self.arrival_location = arrival_results.data.dig("address", "town")
+    elsif arrival_results.data.dig("address", "suburb")
+      self.arrival_location = arrival_results.data.dig("address", "suburb")
+    else
+      self.arrival_location = arrival_results.data.dig("address", "place")
+    end
+  end
+
+  def departure_location_address(departure_results)
+    if departure_results.data.dig("address","city")
+      self.departure_location = departure_results.data.dig("address", "city")
+    elsif departure_results.data.dig("address","town")
+      self.departure_location = departure_results.data.dig("address", "town")
+    elsif departure_results.data.dig("address", "suburb")
+      self.departure_location = departure_results.data.dig("address", "suburb")
+    else
+      self.departure_location = departure_results.data.dig("address", "place")
+    end
   end
 end

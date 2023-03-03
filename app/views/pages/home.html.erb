@@ -24,7 +24,7 @@
       <div class="card-ride-img"style="background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('https://source.unsplash.com/random/?<%=ride.departure_location%>')">
       </div>
       <div class="ride-way d-flex justify-content-center">
-          <p class="departure_arrival"><%= ride.departure_location.capitalize %> to <%= ride.arrival_location.capitalize %></p>
+          <p class="departure_arrival"><%= ride.departure_location&.capitalize %> to <%= ride.arrival_location&.capitalize %></p>
       </div>
       <div class="card-info d-flex justify-content-between">
         <div class="profile align-self-end">
