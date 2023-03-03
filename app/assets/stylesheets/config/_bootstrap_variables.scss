@@ -24,3 +24,10 @@ $border-radius-sm: 2px;
 
 // Override other variables below!
 
+.btn-primary {
+  border: none !important;
+  font-family: 'Roboto', sans-serif !important;
+  border-radius: 50px !important;
+  cursor: pointer !important;
+  padding: 10px 20px !important;
+}
