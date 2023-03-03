@@ -41,7 +41,7 @@ ride2.save
 ride3 = Ride.new(description: "RTT for Versailles from Paris", car_type: "BMW Série 1 ", owner_presence: true, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Versailles", arrival_location: "Versailles")
 ride3.user = maung
 ride3.save
-M
+
 ride4 = Ride.new(description: "Help an old man to go to La Vallée Village", car_type: "Mercedes Classe C", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Paris", arrival_location: "Mall")
 ride4.user = joy
 ride4.save
@@ -50,6 +50,9 @@ ride5 = Ride.new(description: "Trajet quotidien Fontainebleau/Levallois en passa
 ride5.user = sara
 ride5.save
 
+ride1 = Ride.new(description: "Yangon-Mandalay", car_type: "Renault Clio", owner_presence: false, seats_available: [1, 2, 3, 4].sample, date: Date.today + rand(30), departure_location: "Yangon", arrival_location: "Mandalay")
+ride1.user = theo
+ride1.save
 # bookings with user id && ride id && comment
 booking1 = Booking.new
 booking1.user = diane
