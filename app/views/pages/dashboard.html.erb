@@ -48,7 +48,10 @@
     <div class="rides-cards">
       <% current_user.rides.each do |ride| %>
         <% if !ride.bookings.confirmed_bookings.empty?  %>
-          <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> on <%= ride.date %></strong></p>
+          <div class="title-ride-dashboard">
+            <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> </p>
+            <p><%= ride.date %></strong></p>
+          </div>
         <% end %>
 
         <% ride.bookings.each do |booking| %>
@@ -67,8 +70,12 @@
     <div class="rides-cards">
        <% current_user.rides.each do |ride| %>
           <% if !ride.bookings.declined_bookings.empty?  %>
-            <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> on <%= ride.date %></strong></p>
+            <div class="title-ride-dashboard">
+              <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> </p>
+              <p><%= ride.date %></strong></p>
+            </div>
           <% end %>
+
           <% ride.bookings.each do |booking| %>
             <% if booking.status == "Declined" %>
               <div>
@@ -94,20 +101,23 @@
           <%= link_to "#", data: {action: "click->bookings#showForm"} do  %>
             <i class="fa-solid fa-pencil text-body" style="position: absolute; top: 16px; right: 46px;"></i>
           <% end %>
-
-          <div><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name.capitalize %></strong> (Owner)</div>
-          <div>"<%= booking.comment %>"</div>
+          <div class="title-ride-dashboard">
+            <p><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong> </p>
+            <p>on <%= booking.ride.date %></p>
+            <p>with <%= booking.ride.user.first_name.capitalize %></p>
+            <%= link_to destroy_booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+              <i class="fa-solid fa-circle-xmark remove text-danger" style="position: absolute; top: 16px; right: 16px;"></i>
+            <% end %>
+            <%= render "edit_booking_form", booking: booking %>
+          </div>
+            <p>"<%= booking.comment %>"</p>
 
 
           <%# <div class="d-flex justify-content-end"> %>
             <%# <button class="btn btn-outline-primary" data-action="click->bookings#showForm" style="width: min-content;"><i class="fa-solid fa-pencil"></i></button> %>
           <%# </div> %>
 
-          <%= link_to destroy_booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-            <i class="fa-solid fa-circle-xmark remove text-danger" style="position: absolute; top: 16px; right: 16px;"></i>
-          <% end %>
 
-          <%= render "edit_booking_form", booking: booking %>
         <% end %>
       <% end %>
     </div>
