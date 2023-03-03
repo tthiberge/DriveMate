@@ -11,6 +11,9 @@ export default class extends Controller {
 
   showForm(event) {
     event.preventDefault()
+    // console.log(this.formTargets)
     this.formTarget.classList.toggle("d-none")
+
+    // event.currentTarget.classList.toggle("d-none")
     }
 }
