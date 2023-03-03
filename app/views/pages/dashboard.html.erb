@@ -85,17 +85,17 @@
                 <div>"<%= booking.comment %>"</div>
 
                 <%= link_to "#", data: {action: "click->bookings#showForm"} do  %>
-                   <i class="fa-solid fa-pencil" data-action="click->bookings#showForm"></i>
+                   <i class="fa-solid fa-pencil text-body" style="position: absolute; top: 16px; right: 46px;"></i>
                 <% end %>
 
-                <div class="d-flex justify-content-end">
-                  <button class="btn btn-outline-primary" data-action="click->bookings#showForm" style="width: min-content;"><i class="fa-solid fa-pencil"></i></button>
-                </div>
+                <%# <div class="d-flex justify-content-end"> %>
+                  <%# <button class="btn btn-outline-primary" data-action="click->bookings#showForm" style="width: min-content;"><i class="fa-solid fa-pencil"></i></button> %>
+                <%# </div> %>
 
                 <%= link_to destroy_booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
                   <i class="fa-solid fa-circle-xmark remove text-danger" style="position: absolute; top: 16px; right: 16px;"></i>
                 <% end %>
-                
+
                 <%= render "edit_booking_form", booking: booking %>
                 <%# <p>J'impose ma variable locale, je lui dis que c'est la variable d'itération booking</p> %>
               <% end %>
