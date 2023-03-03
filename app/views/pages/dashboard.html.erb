@@ -1,135 +1,155 @@
+
 <div class="row">
-  <div class="col-8">
+<div class="d-flex justify-content-center">
+  <h1>My Bookings</h1>
+</div>
 
-    <h1>My Bookings</h1>
-    <div class="bookings-owners-drivers d-flex ">
-      <div class="as-owner  ">
-        <h4>I have a car</h4>
-        <div class="card p-3 m-1">
-          <p class="text-warning fw-bold">Pending bookings</p>
-            <% current_user.rides.each do |ride| %>
+<div class= "row">
+  <div class="col-12 col-lg-6">
+    <div class="title-show d-flex justify-content-center">
+      <h4>I have a car</h4>
+    </div>
+    <div class="title-rides d-flex justify-content-center">
+      <p>Pending Bookings</p>
+    </div>
+    <div class="rides-cards">
+       <% current_user.rides.each do |ride| %>
+          <% if !ride.bookings.pending_bookings.empty?  %>
+            <div class="title-ride-dashboard">
+              <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> </p>
+              <p><%= ride.date %></strong></p>
+            </div>
+          <% end %>
 
-              <% if !ride.bookings.pending_bookings.empty?  %>
-                <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> on <%= ride.date %></strong></p>
-              <% end %>
-              <% ride.bookings.each do |booking| %>
-                  <% if booking.status == "Pending"  %>
-                  <div class="d-flex flex-column">
-                    <div class="d-flex ">
-                      <div>
-                        <%= link_to booking_update_status_path(booking, status: "Confirmed", status_opposite: "Declined" ) do  %>
-                          <i class="fa-solid fa-square-check m-1 text-success"></i>
-                        <% end %>
-                        <%= link_to booking_update_status_path(booking, status: "Declined" ) do  %>
-                          <i class="fa-solid fa-square-xmark m-1 text-danger"></i>
-                        <% end %>
-                      </div>
-                      <div><%= booking.user.first_name %></div>
-                    </div>
+          <% ride.bookings.each do |booking| %>
+            <% if booking.status == "Pending"  %>
+              <div class="d-flex flex-column">
+                <div class="d-flex ">
+                  <div>
+                    <%= link_to booking_update_status_path(booking, status: "Confirmed", status_opposite: "Declined" ) do  %>
+                      <i class="fa-solid fa-square-check m-1 text-success"></i>
+                    <% end %>
+                    <%= link_to booking_update_status_path(booking, status: "Declined" ) do  %>
+                      <i class="fa-solid fa-square-xmark m-1 text-danger"></i>
+                    <% end %>
+
+                    <div><%= booking.user.first_name %></div>
                     <div>"<%= booking.comment %>"</div>
                   </div>
-                  <% end %>
-              <% end %>
-            <% end %>
-          </div>
-
-          <div class="card p-3 m-1">
-            <p class="text-success fw-bold">Confirmed bookings</p>
-              <% current_user.rides.each do |ride| %>
-               <% if !ride.bookings.confirmed_bookings.empty?  %>
-                  <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> on <%= ride.date %></strong></p>
-                <% end %>
-
-                <% ride.bookings.each do |booking| %>
-                    <% if booking.status == "Confirmed"  %>
-                    <div>
-                      <i class="fa-solid fa-car-side text-success"></i> Ride with <%= booking.user.first_name %>
-                      <p>"<%= booking.comment %>"</p>
-                    </div>
-                    <% end %>
-                <% end %>
-              <% end %>
-          </div>
-
-          <div class="card p-3 m-1">
-            <p class="text-danger fw-bold">Declined bookings</p>
-            <% current_user.rides.each do |ride| %>
-                 <% if !ride.bookings.declined_bookings.empty?  %>
-                  <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> on <%= ride.date %></strong></p>
-                <% end %>
-                <% ride.bookings.each do |booking| %>
-                   <% if booking.status == "Declined" %>
-                     <div>
-                        <i class="fa-solid fa-car-side text-danger"></i> DECLINED riding with <%= booking.user.first_name %>
-                        <p>"<%= booking.comment %>"</p>
-                      </div>
-                    <% end %>
-                 <% end %>
-                <% end %>
-          </div>
-        </div>
-      </div>
-
-      <div class="as-driver", data-controller="bookings">
-
-        <div classe ="d-grid p-3 flex-row">
-          <h4>I have a driving licence</h4>
-          <div style="background-image: url('steering wheel.png')"><img src="app/assets/images/steering wheel.png" alt="steering wheel" style="width: 30px; height: 30px"></div>
-        </div>
-
-        <div class="card p-3 m-1" style="position: relative;">
-          <p class="text-warning fw-bold" data-bookings-target="pending">Pending bookings</p>
-            <% @driver_bookings.each do |booking|%>
-              <% if booking.status == "Pending" %>
-                <div><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name %></strong> (Owner)</div>
-                <div>"<%= booking.comment %>"</div>
-
-                <%= link_to "#", data: {action: "click->bookings#showForm"} do  %>
-                   <i class="fa-solid fa-pencil text-body" style="position: absolute; top: 16px; right: 46px;"></i>
-                <% end %>
-
-                <%# <div class="d-flex justify-content-end"> %>
-                  <%# <button class="btn btn-outline-primary" data-action="click->bookings#showForm" style="width: min-content;"><i class="fa-solid fa-pencil"></i></button> %>
-                <%# </div> %>
-
-                <%= link_to destroy_booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-                  <i class="fa-solid fa-circle-xmark remove text-danger" style="position: absolute; top: 16px; right: 16px;"></i>
-                <% end %>
-
-                <%= render "edit_booking_form", booking: booking %>
-                <%# <p>J'impose ma variable locale, je lui dis que c'est la variable d'itération booking</p> %>
-              <% end %>
-            <% end %>
-        </div>
-        <div class="card p-3 m-1">
-          <p class="text-success fw-bold">Confirmed bookings</p>
-          <% @driver_bookings.each do |booking|%>
-            <% if booking.status == "Confirmed" %>
-              <div><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name %></strong> (Owner)</div>
-              <div>"<%= booking.comment %>"</div>
-
-                <%= render "edit_booking_form", booking: booking %>
-                <%# <p>J'impose ma variable locale, je lui dis que c'est la variable d'itération booking</p> %>
-
-
-            <% end %>
+                </div>
+              </div>
+            <%end%>
           <% end %>
-        </div>
+        <% end %>
+    </div>
 
-        <div class="card p-3 m-1">
-          <p class="text-danger fw-bold">Declined bookings</p>
-          <% @driver_bookings.each do |booking| %>
+    <div class="title-rides d-flex justify-content-center">
+      <p>Confirmed Bookings</p>
+    </div>
+    <div class="rides-cards">
+      <% current_user.rides.each do |ride| %>
+        <% if !ride.bookings.confirmed_bookings.empty?  %>
+          <div class="title-ride-dashboard">
+            <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> </p>
+            <p><%= ride.date %></strong></p>
+          </div>
+        <% end %>
+
+        <% ride.bookings.each do |booking| %>
+            <% if booking.status == "Confirmed"  %>
+            <div>
+              <i class="fa-solid fa-car-side text-success"></i> Ride with <%= booking.user.first_name.capitalize %>
+              <p>"<%= booking.comment %>"</p>
+            </div>
+            <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="title-rides d-flex justify-content-center">
+      <p>Declined</p>
+    </div>
+    <div class="rides-cards">
+       <% current_user.rides.each do |ride| %>
+          <% if !ride.bookings.declined_bookings.empty?  %>
+            <div class="title-ride-dashboard">
+              <p><strong><%= ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= ride.arrival_location %> </p>
+              <p><%= ride.date %></strong></p>
+            </div>
+          <% end %>
+
+          <% ride.bookings.each do |booking| %>
             <% if booking.status == "Declined" %>
-              <div><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name %></strong> (Owner)</div>
-              <div>"<%= booking.comment %>"</div>
+              <div>
+                <i class="fa-solid fa-car-side text-danger"></i> DECLINED riding with <%= booking.user.first_name %>
+                <p>"<%= booking.comment %>"</p>
+              </div>
             <% end %>
           <% end %>
-        </div>
-      </div>
+        <% end %>
+    </div>
   </div>
 
+  <div class="col-12 col-lg-6">
+    <div class="title-show d-flex justify-content-center">
+      <h4>I have a driving licence</h4>
+    </div>
+    <div class="title-rides d-flex justify-content-center">
+      <p data-bookings-target="pending">Pending Bookings</p>
+    </div>
+    <div class="rides-cards" style="position: relative;">
+      <% @driver_bookings.each do |booking|%>
+        <% if booking.status == "Pending" %>
+          <%= link_to "#", data: {action: "click->bookings#showForm"} do  %>
+            <i class="fa-solid fa-pencil text-body" style="position: absolute; top: 16px; right: 46px;"></i>
+          <% end %>
+          <div class="title-ride-dashboard">
+            <p><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong> </p>
+            <p>on <%= booking.ride.date %></p>
+            <p>with <%= booking.ride.user.first_name.capitalize %></p>
+            <%= link_to destroy_booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+              <i class="fa-solid fa-circle-xmark remove text-danger" style="position: absolute; top: 16px; right: 16px;"></i>
+            <% end %>
+            <%= render "edit_booking_form", booking: booking %>
+          </div>
+            <p>"<%= booking.comment %>"</p>
 
-  <div class="col-4">
+
+          <%# <div class="d-flex justify-content-end"> %>
+            <%# <button class="btn btn-outline-primary" data-action="click->bookings#showForm" style="width: min-content;"><i class="fa-solid fa-pencil"></i></button> %>
+          <%# </div> %>
+
+
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="title-rides d-flex justify-content-center">
+      <p>Confirmed Bookings</p>
+    </div>
+    <div class="rides-cards">
+      <% @driver_bookings.each do |booking|%>
+        <% if booking.status == "Confirmed" %>
+          <div><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name.capitalize.capitalize %></strong> (Owner)</div>
+          <div>"<%= booking.comment %>"</div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="title-rides d-flex justify-content-center">
+      <p>Declined</p>
+    </div>
+    <div class="rides-cards">
+      <% @driver_bookings.each do |booking| %>
+        <% if booking.status == "Declined" %>
+          <div><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.ride.user.first_name.capitalize %></strong> (Owner)</div>
+          <div>"<%= booking.comment %>"</div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-6">
     <div class="modify_profile">
       <%= link_to edit_user_registration_path, class: "nav-link" do %>
         <i class="fa-solid fa-pen"></i>
@@ -150,7 +170,7 @@
 
         <tr>
           <th scope="row">Name</th>
-          <td><%= @user.first_name %> <%= @user.last_name %></td>
+          <td><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></td>
         </tr>
 
         <tr>
@@ -193,23 +213,20 @@
       </tbody>
     </table>
   </div>
-  <%# <p> Placeholder for creating a button sending to resetting the paswword via devise</p>%>
 </div>
-
 
 <%# Changer ici en fonction de comment j'ai adapté mon dashboard dans pagescontroller %>
 
+<!--
+<ul>
+  <% @owner_bookings.each do |booking|
+  %>
+    <% if booking.status == "Pending" %>
+      <li><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.user.first_name %></strong> (Driver candidate)</li>
+    <% end %>
+  <% end %>
+</ul>
 
-          <!--
-          <ul>
-            <% @owner_bookings.each do |booking|
-            %>
-              <% if booking.status == "Pending" %>
-                <li><strong><%= booking.ride.departure_location %> <i class="fa-solid fa-arrow-right"></i> <%= booking.ride.arrival_location %></strong>  on <%= booking.ride.date %> with <strong><%= booking.user.first_name %></strong> (Driver candidate)</li>
-              <% end %>
-            <% end %>
-          </ul>
+-->
 
-          -->
-
-          <%# <p>Mon autre tentative</p> %>
+<%# <p>Mon autre tentative</p> %>
