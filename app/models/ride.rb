@@ -32,6 +32,7 @@ class Ride < ApplicationRecord
 
     departure_location_address(departure_results)
     self.departure_results = departure_results.data
+    
     arrival_results = Geocoder.search(arrival_location).first
     self.arrival_latitude = arrival_results.data["lat"]
     self.arrival_longitude = arrival_results.data["lon"]
